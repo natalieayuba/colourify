@@ -1,0 +1,26 @@
+how to get the top albumns how do you figure this out
+
+
+
+get users top songs and group by album?
+/me/top/{tracks}
+time_range=long_term
+limit=50
+
+check all the returned songs and get 
+
+albums = [
+  {
+    name: album_name,
+    tracks: [ track, track, track ],
+  },
+]
+
+for each track in items
+  add its album to a dictionary
+  if albums contains an item with name=album_name
+    add track to albums.something.tracks
+  else
+    create new album dict and add song to it
+
+or getr top artsits and group those songs by album?
