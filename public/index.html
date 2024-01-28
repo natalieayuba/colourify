@@ -39,27 +39,12 @@
     </div>
 
     <script id="albums-template" type="text/x-handlebars-template">
-      <h1>album name</h1>
-      <!-- <ol>
-        {{#each this}}
-        <li><p>Song: {{name}}</p><p>Artist: {{artists.0.name}}</p><p>Album: {{album.name}}</p></li>
-        {{/each}}
-      </ol> -->
       <ol>
         {{#each this}}
-          <li>{{name}}</li>
-          <ol>
-            {{#each tracks}}
-              <li>{{this}}</li>
-            {{/each}}
-          </ol>
+        <img width="200" src="{{images.0.url}}" />
+        <li>{{name}} by {{artists.0.name}}</li>
         {{/each}}
       </ol>
-      <!-- <ol>
-        {{#each this}}
-          <li>{{name}}</li>
-        {{/each}}
-      </ol> -->
     </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
