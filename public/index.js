@@ -7,10 +7,16 @@ const albumsSource = document.getElementById('albums-template').innerHTML;
 const albumsTemplate = Handlebars.compile(albumsSource);
 const albumsPlaceholder = document.getElementById('albums');
 
-let username;
+const palettesSource = document.getElementById('palettes-template').innerHTML;
+const palettesTemplate = Handlebars.compile(palettesSource);
+const palettesPlaceholder = document.getElementById('palettes');
+
 const headers = {
   Authorization: 'Bearer ' + access_token,
 };
+
+const numAlbums = 5;
+const numSwatches = 5;
 
 /**
  * Obtains parameters from the hash of the URL
@@ -131,19 +137,17 @@ function getTopAlbums(topTracks) {
       albums[index] = album;
     } else {
       album = track.album;
-      album.tracks = [track.name]
+      album.tracks = [track.name];
       album.ranking = topTracks.indexOf(track);
       albums.push(album);
     }
   }
 
   // albums = albums.filter((album) => album.tracks.length > 1);
-
   albums.sort((a, b) => {
     return a.ranking - b.ranking;
   });
-
-  albums = albums.slice(0, 5);
+  albums = albums.slice(0, numAlbums);
 
   return albums;
 }
@@ -151,9 +155,41 @@ function getTopAlbums(topTracks) {
 function getColourPalette() {
   const topTracks = getTopTracks();
   const topAlbums = getTopAlbums(topTracks);
-  albumsPlaceholder.innerHTML = albumsTemplate(topAlbums);
-  console.log(topAlbums);
+  // add loop here instead?
+  albumsPlaceholder.innerHTML = albumsTemplate({ album: topAlbums });
+
+  let palettes = [];
+
+  for (const album of topAlbums) {
+    const albumArt = document.getElementById(album.id);
+    albumArt.crossOrigin = 'Anonymous';
+    if (albumArt.complete) {
+      palettes = getColourValues(palettes, albumArt);
+    } else {
+      albumArt.addEventListener('load', () => {
+        palettes = getColourValues(palettes, albumArt);
+      });
+    }
+  }
+
+  palettesPlaceholder.innerHTML = palettesTemplate({ palette: palettes });
+  console.log(palettes);
+
   hideLogin();
+}
+
+function getColourValues(palettes, albumArt) {
+  const colorThief = new ColorThief();
+  const palette = colorThief.getPalette(albumArt, numSwatches);
+
+  for (let i = 0; i < palette.length; i++) {
+    const rgb = `rgb(${palette[i][0]}, ${palette[i][1]}, ${palette[i][2]})`;
+    palette[i] = `style="background-color: ${rgb};"`;
+  }
+
+  palettes.push(palette);
+
+  return palettes;
 }
 
 if (error) {

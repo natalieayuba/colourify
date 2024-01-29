@@ -35,19 +35,31 @@
       </div>
       <div id="loggedin">
         <div id="albums"></div>
+        <div id="palettes"></div>
       </div>
     </div>
 
     <script id="albums-template" type="text/x-handlebars-template">
       <ol>
-        {{#each this}}
-        <img width="200" src="{{images.0.url}}" />
-        <li>{{name}} by {{artists.0.name}}</li>
+        {{#each album}}
+          <img width='200' height='200' src='{{images.0.url}}' id='{{id}}' />
+          <li>{{name}} by {{artists.0.name}}</li>
         {{/each}}
       </ol>
     </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script id="palettes-template" type="text/x-handlebars-template">
+      <ol>
+        {{#each palette}}
+          {{#each this}}
+            <div class="swatch" {{{this}}}></div>
+          {{/each}}
+        {{/each}}
+      </ol>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <script src="index.js"></script>
   </body>
 </html>
