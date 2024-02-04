@@ -1,9 +1,18 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [],
+
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+module.exports = {
+  content: ['./src/*.html'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Merriweather Sans', ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        'spotify-green': '#1DB954',
+      },
+    },
   },
   plugins: [],
-}
-
+};

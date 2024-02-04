@@ -46,7 +46,7 @@ const stateKey = 'spotify_auth_state';
 const app = express();
 
 app
-  .use(express.static(__dirname + '/public'))
+  .use(express.static(__dirname + '/src'))
   .use(cors())
   .use(cookieParser());
 
@@ -103,19 +103,6 @@ app.get('/callback', (req, res) => {
     request.post(authOptions, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         const { access_token, refresh_token } = body;
-
-        // do i even need this?
-
-        // var options = {
-        //   url: 'https://api.spotify.com/v1/me',
-        //   headers: { 'Authorization': 'Bearer ' + access_token },
-        //   json: true
-        // };
-
-        // // use the access token to access the Spotify Web API
-        // request.get(options, (error, response, body) => {
-        //   console.log(body);
-        // });
 
         // pass the token to the browser to make requests from here
         res.redirect(

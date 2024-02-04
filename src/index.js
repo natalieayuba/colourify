@@ -1,11 +1,9 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-cond-assign */
 /* eslint-disable no-undef */
 /* eslint-disable no-shadow */
-/* eslint-disable linebreak-style */
 /* eslint-disable prefer-template */
 /* eslint-disable camelcase */
-/**
- * Get data from user's Spotify account.
- */
 
 /**
  * Obtains parameters from the hash of the URL
@@ -25,20 +23,16 @@ const getHashParams = () => {
 };
 
 const { access_token, error } = getHashParams();
-
 const colorThief = new ColorThief();
-
 const baseUrl = 'https://api.spotify.com/v1';
-const headers = {
-  Authorization: 'Bearer ' + access_token,
-};
-
+const headers = { Authorization: 'Bearer ' + access_token };
 const source = document.getElementById('palette-template').innerHTML;
 const template = Handlebars.compile(source);
 const placeholder = document.getElementById('palette');
-
 const numAlbums = 5;
 const numSwatches = 5;
+
+let username;
 
 function showLogin() {
   $('#login').show();
@@ -68,9 +62,7 @@ const getCurrentUser = () => {
 const getUsersTopTracks = () => {
   const limit = 50;
   const offset = 0;
-  const url =
-    baseUrl +
-    `/me/top/tracks?time_range=long_term&limit=${limit}&offset=${offset}`;
+  const url = baseUrl + `/me/top/tracks?time_range=long_term&limit=${limit}&offset=${offset}`;
   return $.ajax({ url, headers });
 };
 
@@ -100,15 +92,8 @@ const removeUnwantedTracks = async (tracks) => {
   });
 
   while (i--) {
-    const isAsmrGenre = artists.some(
-      (artist) =>
-        artist.id === tracks[i].artists[0].id && artist.genres.includes('asmr')
-    );
-    if (
-      isAsmrGenre ||
-      tracks[i].artists[0].name.includes('ASMR') ||
-      tracks[i].album.album_type !== 'ALBUM'
-    ) {
+    const isAsmrGenre = artists.some((artist) => artist.id === tracks[i].artists[0].id && artist.genres.includes('asmr'));
+    if (isAsmrGenre || tracks[i].artists[0].name.includes('ASMR') || tracks[i].album.album_type !== 'ALBUM') {
       tracks.splice(tracks.indexOf(tracks[i]), 1);
     }
   }
@@ -121,9 +106,16 @@ const removeUnwantedTracks = async (tracks) => {
  * @param topTracks An array of the user's top tracks
  * @returns An array of albums
  */
-const getTopAlbums = (topTracks) => {
+const getTopAlbums = async () => {
   let albums = [];
   let album;
+  let topTracks;
+
+  await getUsersTopTracks().done((response) => {
+    topTracks = response.items;
+  });
+
+  topTracks = await removeUnwantedTracks(topTracks);
 
   topTracks.forEach((track) => {
     if (albums.some((album) => album.id === track.album.id)) {
@@ -153,29 +145,24 @@ const getTopAlbums = (topTracks) => {
  * @returns An array of colour palettes
  */
 const getPalettes = async (albums) => {
-  // try to do it other easy way.
   const palettes = [];
-  const waitForImg = (src) =>
-    new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => resolve(img);
-      img.onerror = reject;
-      img.src = src;
-      img.crossOrigin = 'Anonymous';
-    });
+  const waitForImg = (src) => new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+    img.crossOrigin = 'Anonymous';
+  });
 
-  await Promise.all(
-    albums.map((album) => waitForImg(album.images[0].url))
-  ).then((images) =>
-    images.forEach((albumArt) => {
+  await Promise.all(albums.map((album) => waitForImg(album.images[0].url)))
+    .then((images) => images.forEach((albumArt) => {
       const p = colorThief.getPalette(albumArt, numSwatches);
       p.forEach(([r, g, b], index) => {
         const rgb = `rgb(${r}, ${g}, ${b})`;
         p[index] = `style="background-color: ${rgb};"`;
       });
       palettes.push(p);
-    })
-  );
+    }));
 
   return palettes;
 };
@@ -184,25 +171,15 @@ const getPalettes = async (albums) => {
  * Generate a colour palette based on the album art of the user's top albums
  */
 const generateColourPalette = async () => {
-  let username;
-  let topTracks;
-
   await getCurrentUser().done((response) => {
     username = response.display_name;
     username = username.substring(0, username.lastIndexOf(' '));
   });
 
-  // can probs do top tracks inside top albums?
-  await getUsersTopTracks().done((response) => {
-    topTracks = response.items;
-  });
+  const albums = await getTopAlbums();
+  const palettes = await getPalettes(albums);
 
-  topTracks = await removeUnwantedTracks(topTracks);
-
-  const topAlbums = getTopAlbums(topTracks);
-  const palettes = await getPalettes(topAlbums);
-
-  placeholder.innerHTML = template({ username, topAlbums, palettes });
+  placeholder.innerHTML = template({ username, albums, palettes });
 
   hideLogin();
 };
