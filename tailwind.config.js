@@ -11,6 +11,7 @@ module.exports = {
       },
       colors: {
         'spotify-green': '#1DB954',
+        'colourify-blue': '#0078ca',
       },
     },
   },

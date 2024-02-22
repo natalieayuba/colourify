@@ -30,6 +30,8 @@ const headers = { Authorization: 'Bearer ' + access_token };
 const source = document.getElementById('palette-template').innerHTML;
 const template = Handlebars.compile(source);
 const placeholder = document.getElementById('palette');
+const downloadBtn = document.getElementById('download-btn');
+const includeAlbumTitleSwitch = document.getElementById('include-album-title-switch');
 const numAlbums = 5;
 const numSwatches = 5;
 
@@ -183,12 +185,25 @@ const downloadImg = () => {
 };
 
 /**
+ * Show artist and album titles beneath each colour palette.
+ */
+const showTitles = () => {
+  const albumTitles = document.querySelectorAll('.album-title');
+  albumTitles.forEach((albumTitle) => {
+    if (includeAlbumTitleSwitch.checked) {
+      albumTitle.classList.remove('hidden');
+    } else {
+      albumTitle.classList.add('hidden');
+    }
+  });
+};
+
+/**
  * Generate a colour palette based on the album art of the user's top albums
  */
 const generateColourPalette = async () => {
   const albums = await getTopAlbums();
   const palettes = await getPalettes(albums);
-  const downloadBtn = document.getElementById('download-btn');
 
   await getCurrentUser().done((response) => {
     username = response.display_name;
@@ -198,6 +213,7 @@ const generateColourPalette = async () => {
 
   placeholder.innerHTML = template({ title, albums, palettes });
   downloadBtn.addEventListener('click', () => downloadImg());
+  includeAlbumTitleSwitch.addEventListener('change', () => showTitles());
 
   hideLogin();
 };

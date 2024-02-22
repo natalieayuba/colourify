@@ -8,10 +8,7 @@
     <link rel="apple-touch-icon" href="./favicon-180x180.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@100..800&display=swap" rel="stylesheet">
     <link href="./output.css" rel="stylesheet" />
     <title>Colourify</title>
     <meta
@@ -52,34 +49,30 @@
               class="bg-white w-[1080px] h-[1920px] px-[130px] py-[182px] flex flex-col justify-between"
             ></div>
           </div>
+          <div class="flex gap-10 py-10 px-5 items-centern justify-between">
+            <p>Include artist and album name</p>
+            <label class="relative inline-block w-[40px] h-[22px]">
+              <input type="checkbox" id="include-album-title-switch" class="opacity-0 w-0 h-0 peer" />
+              <span class="absolute cursor-pointer top-0 bottom-0 left-0 right-0 bg-gray-300 duration-300 rounded-full peer-checked:bg-black before:absolute before:content-[''] before:h-[18px] before:w-[18px] before:left-[3px] before:bottom-[2px] before:bg-white before:duration-300 before:rounded-full peer-checked:before:translate-x-[16px]"></span>
+            </label>
+          </div>
           <div class="w-full flex justify-center mt-16">
             <button id="download-btn" class="w-full sm:w-auto btn">
               Download image
             </button>
           </div>
         </div>
-        <footer
-          class="absolute mt-10 flex flex-col gap-5 items-center px-6 py-10 bottom-0 w-full border-t"
-        >
-          <div class="flex gap-3">
-            <p>
-              Created by
-              <a href="http://natalieayuba.github.io" class="link"
-                >Natalie Ayuba</a>
-            </p>
+        <footer class="text-sm absolute mt-10 flex flex-col gap-4 items-center px-6 py-10 bottom-0 w-full border-t">
+          <div class="flex gap-4">
+            <p>Created by <a href="http://natalieayuba.github.io" class="link">Natalie Ayuba</a></p>
+            <span class="text-gray-300">|</span>
+            <div class="flex gap-2">
+              <a href="#" class="link">Home</a>
+              <a href="#" class="link">About</a>
+              <a href="#" class="link">Policy</a>
+            </div>
           </div>
-          <div class="flex gap-2">
-            <a href="#" class="link">Home</a>
-            <span>|</span>
-            <a href="#" class="link">About</a>
-            <span>|</span>
-            <a href="#" class="link">Policy</a>
-          </div>
-          <img
-            src="./images/Spotify_Logo_RGB_Black.png"
-            alt="Spotify Logo"
-            class="w-24"
-          />
+          <img src="./images/Spotify_Logo_RGB_Black.png" alt="Spotify Logo" class="w-24" />
         </footer>
       </div>
     </main>
@@ -98,9 +91,7 @@
                 alt='{{name}} by {{artists.0.name}} Album Cover'
                 id='{{id}}'
               />
-              <p class='absolute mt-3 text-2xl hidden'>{{name}}
-                by
-                {{artists.0.name}}</p>
+              <p class='album-title absolute mt-3 text-2xl hidden'>{{name}} by {{artists.0.name}}</p>
             </div>
           {{/each}}
         </div>
