@@ -4,9 +4,9 @@
 
 @layer components {
   .btn {
-    @apply text-2xl font-medium px-12 py-6 rounded-lg text-white flex gap-4 items-center justify-center bg-black hover:brightness-95;
+    @apply text-xl font-medium px-12 py-6 rounded-lg text-white flex gap-4 items-center justify-center bg-black hover:brightness-95;
   }
   .link {
-    @apply text-blue-500;
+    @apply text-blue-700;
   }
 }

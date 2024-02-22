@@ -556,8 +556,8 @@ video {
   padding-right: 3rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -570,7 +570,7 @@ video {
 
 .link {
   --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
+  color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
 .absolute {
@@ -589,16 +589,24 @@ video {
   margin-bottom: 3rem;
 }
 
-.mb-48 {
-  margin-bottom: 12rem;
-}
-
 .mb-6 {
   margin-bottom: 1.5rem;
 }
 
+.mb-60 {
+  margin-bottom: 15rem;
+}
+
+.mb-\[-1344px\] {
+  margin-bottom: -1344px;
+}
+
 .mr-8 {
   margin-right: 2rem;
+}
+
+.mr-\[-756px\] {
+  margin-right: -756px;
 }
 
 .mt-10 {
@@ -619,10 +627,6 @@ video {
 
 .hidden {
   display: none;
-}
-
-.h-36 {
-  height: 9rem;
 }
 
 .h-8 {
@@ -689,6 +693,16 @@ video {
   flex: none;
 }
 
+.origin-top-left {
+  transform-origin: top left;
+}
+
+.scale-\[0\.3\] {
+  --tw-scale-x: 0.3;
+  --tw-scale-y: 0.3;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -733,11 +747,6 @@ video {
   border-top-width: 1px;
 }
 
-.bg-gray-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
 .bg-spotify-green {
   --tw-bg-opacity: 1;
   background-color: rgb(29 185 84 / var(--tw-bg-opacity));
@@ -772,8 +781,8 @@ video {
   padding-bottom: 182px;
 }
 
-.pb-36 {
-  padding-bottom: 9rem;
+.pb-40 {
+  padding-bottom: 10rem;
 }
 
 .pt-10 {
@@ -798,14 +807,14 @@ video {
   line-height: 2.25rem;
 }
 
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
 }
 
 .font-bold {
@@ -823,7 +832,21 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:mb-\[-960px\] {
+    margin-bottom: -960px;
+  }
+
+  .sm\:mr-\[-540px\] {
+    margin-right: -540px;
+  }
+
   .sm\:w-auto {
     width: auto;
+  }
+
+  .sm\:scale-50 {
+    --tw-scale-x: .5;
+    --tw-scale-y: .5;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 }

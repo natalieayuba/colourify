@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-cond-assign */
 /* eslint-disable no-undef */
@@ -168,24 +169,41 @@ const getPalettes = async (albums) => {
 };
 
 /**
+ * Download colour palette as png
+ */
+const downloadImg = () => {
+  htmlToImage
+    .toPng(placeholder)
+    .then((dataUrl) => {
+      const link = document.createElement('a');
+      link.download = `${username.toLowerCase()}_colourify_palette.png`;
+      link.href = dataUrl;
+      link.click();
+    });
+};
+
+/**
  * Generate a colour palette based on the album art of the user's top albums
  */
 const generateColourPalette = async () => {
-  await getCurrentUser().done((response) => {
-    username = response.display_name;
-    username = username.substring(0, username.lastIndexOf(' '));
-  });
-
   const albums = await getTopAlbums();
   const palettes = await getPalettes(albums);
+  const downloadBtn = document.getElementById('download-btn');
 
-  placeholder.innerHTML = template({ username, albums, palettes });
+  await getCurrentUser().done((response) => {
+    username = response.display_name;
+  });
+
+  const title = username + (username.endsWith('s') ? "'" : "'s") + '  Colour Palette';
+
+  placeholder.innerHTML = template({ title, albums, palettes });
+  downloadBtn.addEventListener('click', () => downloadImg());
 
   hideLogin();
 };
 
 if (error) {
-  alert('There was an error during the authentication');
+  alert('There was an error during authentication.');
 } else if (access_token) {
   generateColourPalette();
 } else {
