@@ -171,7 +171,7 @@ const getPalettes = async (albums) => {
 };
 
 /**
- * Download colour palette as png
+ * Download colour palette as a png image
  */
 const downloadImg = () => {
   htmlToImage
@@ -185,7 +185,7 @@ const downloadImg = () => {
 };
 
 /**
- * Show artist and album titles beneath each colour palette.
+ * Show artist and album titles beneath each colour palette
  */
 const showTitles = () => {
   const albumTitles = document.querySelectorAll('.album-title');
@@ -197,6 +197,11 @@ const showTitles = () => {
     }
   });
 };
+
+/**
+ * Confirm user wishes to navigate to homepage after palette has been generated
+ */
+const navigateHome = () => window.location.href.includes('access_token') && confirm('Are you sure you want to leave?');
 
 /**
  * Generate a colour palette based on the album art of the user's top albums
