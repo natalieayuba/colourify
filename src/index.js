@@ -1,3 +1,6 @@
+/* eslint-disable no-loop-func */
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-plusplus */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-cond-assign */
@@ -44,7 +47,11 @@ function showLogin() {
 
 function hideLogin() {
   $('#login').hide();
-  $('#loggedin').show();
+  $('#loggedin').css('display', 'flex');
+}
+
+function confirmNavigation() {
+  if (window.location.href.includes('access_token')) return confirm('Are you sure you want to leave?');
 }
 
 /**
@@ -197,11 +204,6 @@ const showTitles = () => {
     }
   });
 };
-
-/**
- * Confirm user wishes to navigate to homepage after palette has been generated
- */
-const navigateHome = () => window.location.href.includes('access_token') && confirm('Are you sure you want to leave?');
 
 /**
  * Generate a colour palette based on the album art of the user's top albums
