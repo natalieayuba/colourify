@@ -32,15 +32,19 @@
             <div id="palette" class="bg-white w-[1080px] h-[1920px] px-[130px] py-[182px] flex flex-col justify-between"></div>
           </div>
           <form class="w-[324px] sm:w-[520px]">
-            <h2 class="text-3xl sm:text-4xl font-semibold">Customise Image</h2>
-            <div class="flex gap-10 py-10 items-center justify-between">
+            <h2 class="text-3xl sm:text-4xl font-semibold mb-8">Customise Image</h2>
+            <div class="flex flex-col gap-2 mb-8">
+              <label for="username">Your name</label>
+              <input type="text" name="username" id="username" class="border w-full h-12 px-4 rounded-lg">
+            </div>
+            <div class="flex gap-10 mb-8 items-center justify-between">
               <p>Include artist and album name</p>
               <label class="relative inline-block w-[40px] h-[22px]">
-                <input type="checkbox" id="include-album-title-switch" class="opacity-0 w-0 h-0 peer" />
+                <input type="checkbox" id="include-album-title-switch" class="opacity-0 w-0 h-0 peer">
                 <span class="absolute cursor-pointer top-0 bottom-0 left-0 right-0 bg-gray-300 duration-300 rounded-full peer-checked:bg-black before:absolute before:content-[''] before:h-[18px] before:w-[18px] before:left-[3px] before:bottom-[2px] before:bg-white before:duration-300 before:rounded-full peer-checked:before:translate-x-[16px]"></span>
               </label>
             </div>
-            <button id="download-btn" class="w-full flex justify-center mt-8 sm:w-auto btn">Download image</button>
+            <button type="button" id="download-btn" class="w-full flex justify-center mt-12 sm:w-auto btn">Download image</button>
           </form>
         </div>
       </main>

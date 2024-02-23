@@ -35,6 +35,7 @@ const template = Handlebars.compile(source);
 const placeholder = document.getElementById('palette');
 const downloadBtn = document.getElementById('download-btn');
 const includeAlbumTitleSwitch = document.getElementById('include-album-title-switch');
+const usernameField = document.getElementById('username');
 const numAlbums = 5;
 const numSwatches = 5;
 
@@ -211,16 +212,23 @@ const showTitles = () => {
 const generateColourPalette = async () => {
   const albums = await getTopAlbums();
   const palettes = await getPalettes(albums);
+  let title;
 
   await getCurrentUser().done((response) => {
     username = response.display_name;
   });
 
-  const title = username + (username.endsWith('s') ? "'" : "'s") + '  Colour Palette';
+  title = username + (username.endsWith('s') ? "'" : "'s") + '  Colour Palette';
 
   placeholder.innerHTML = template({ title, albums, palettes });
-  downloadBtn.addEventListener('click', () => downloadImg());
+  downloadBtn.addEventListener('click', () => downloadImg()); // also add checkfieldnotempty??
   includeAlbumTitleSwitch.addEventListener('change', () => showTitles());
+  usernameField.value = username;
+  usernameField.addEventListener('keyup', () => {
+    username = usernameField.value;
+    title = username + (username.endsWith('s') ? "'" : "'s") + '  Colour Palette';
+    placeholder.innerHTML = template({ title, albums, palettes });
+  });
 
   hideLogin();
 };
