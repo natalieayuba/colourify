@@ -38,7 +38,8 @@
               <input type="text" name="username" id="username" class="border w-full h-12 px-4 rounded-lg">
             </div>
             <div class="flex gap-10 mb-8 items-center justify-between">
-              <p>Include artist and album name</p>
+              <!-- maybe move this into label below? -->
+              <label>Include artist and album name</label>
               <label class="relative inline-block w-[40px] h-[22px]">
                 <input type="checkbox" id="include-album-title-switch" class="opacity-0 w-0 h-0 peer">
                 <span class="absolute cursor-pointer top-0 bottom-0 left-0 right-0 bg-gray-300 duration-300 rounded-full peer-checked:bg-black before:absolute before:content-[''] before:h-[18px] before:w-[18px] before:left-[3px] before:bottom-[2px] before:bg-white before:duration-300 before:rounded-full peer-checked:before:translate-x-[16px]"></span>
@@ -66,12 +67,12 @@
         <p class='font-bold text-4xl'>{{title}}</p>
         <p class='text-2xl'>colourify.com</p>
       </div>
-      <div class='flex h-[1300px] w-full'>
+      <!-- <div class='flex h-[1300px] w-full'>
         <div class='flex h-full justify-between flex-col flex-none mr-8'>
           {{#each albums}}
             <div>
               <img src='{{images.0.url}}' class='w-[200px] h-[200px]' alt='{{name}} by {{artists.0.name}} Album Cover' id='{{id}}'  />
-              <p class='album-title absolute mt-3 text-2xl hidden'>{{name}} by {{artists.0.name}}</p>
+              <a href="{{external_urls.spotify}}" class='album-title absolute mt-3 text-2xl hidden'>{{name}} by {{artists.0.name}}</a>
             </div>
           {{/each}}
         </div>
@@ -84,7 +85,13 @@
             </div>
           {{/each}}
         </div>
-      </div>
+      </div> -->
+      <ol class="list-decimal">
+        {{#each topTracks}}
+        <li>{{name}} - {{artists.[0].name}} - {{album.name}} - {{album.album_type}}</li>
+          <p>{{album.albumVersion.album.name}} - {{album.albumVersion.album.album_type}}</p>
+        {{/each}}
+      </ol>
       <img src='./images/Spotify_Logo_RGB_Black.png' alt='Spotify Logo' class='w-[180px] self-center' />
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>

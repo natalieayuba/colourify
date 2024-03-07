@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn {
+    @apply text-xl font-medium px-12 py-6 rounded-lg text-white flex gap-4 items-center justify-center bg-black hover:brightness-95 hover:shadow-lg;
+  }
+
+  .link {
+    @apply text-colourify-blue hover:brightness-75 hover:underline;
+  }
+}

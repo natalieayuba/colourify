@@ -1,0 +1,17 @@
+{
+  "name": "Colourify",
+  "author": "Natalie Ayuba",
+  "description": "A web application for generating a color palette based on your favourite Spotify albums' art.",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-180x180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ]
+}
