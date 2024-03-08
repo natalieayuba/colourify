@@ -44,9 +44,6 @@ let topTracks = [];
 let maxTracks;
 
 let username;
-const offset = 0;
-const limit = 50;
-const time_range = 'short_term';
 
 function showLogin() {
   $('#login').show();

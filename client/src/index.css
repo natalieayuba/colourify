@@ -15,6 +15,10 @@ body {
     @apply text-xl font-medium px-12 py-6 rounded-lg text-white flex gap-4 items-center justify-center bg-black hover:brightness-95 hover:shadow-lg;
   }
 
+  .btn-disabled {
+    @apply opacity-30 brightness-100 shadow-none;
+  }
+
   .link {
     @apply text-colourify-blue hover:brightness-75 hover:underline;
   }
