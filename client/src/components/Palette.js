@@ -18,18 +18,15 @@ const Palette = ({ username, paletteRef, tracks, loading }) => {
         <p className='text-2xl'>colourify.com</p>
       </div>
       <div className='flex justify-center'>
-        {/* attribtues arent working? for colourring? */}
         {loading ? (
           <ColorRing />
         ) : (
           <ol className='list-decimal'>
             {tracks.map((track) => (
-              <div key={track.id}>
-                <li>
-                  {track.artists[0].name} - {track.name} - {track.album.name} -{' '}
-                  {track.album.album_type}
-                </li>
-              </div>
+              <li key={track.id}>
+                {track.artists[0].name} - {track.name} - {track.album.name} -{' '}
+                {track.album.album_type}
+              </li>
             ))}
           </ol>
         )}

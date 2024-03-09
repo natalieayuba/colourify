@@ -11,7 +11,7 @@ afterEach(() => {
 
 describe('Palette customisation', () => {
   test('changing name input updates username in palette title', () => {
-    render(<DownloadScreen user={exampleUser} />);
+    render(<DownloadScreen user={exampleUser} tracks={[]} />);
     const nameInput = screen.getByDisplayValue(exampleUser.display_name);
     const paletteTitle = screen.getByText('Colour Palette', { exact: false });
 

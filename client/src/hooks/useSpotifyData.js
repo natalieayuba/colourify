@@ -51,7 +51,7 @@ const useSpotifyData = (accessToken) => {
       };
       fetchData();
     }
-  }, [accessToken, selectedTimeRange]);
+  }, [selectedTimeRange]);
 
   return { user, tracks, selectedTimeRange, setSelectedTimeRange, loading };
 };
