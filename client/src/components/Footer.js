@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import spotifyLogo from '../assets/images/Spotify_Logo_RGB_Black.png';
 
 const Footer = () => {
@@ -13,16 +14,8 @@ const Footer = () => {
         <span className='text-gray-300'>•</span>
         <div className='flex gap-4'>
           {/* ADD ONLCICKS TO HREFTS */}
-          <a href='/' className='link'>
-            Home
-          </a>
-          <a href='/about' className='link'>
-            About
-          </a>
-          <a href='/policy' className='link'
-          >
-            Policy
-          </a>
+          <Link to="/" className='link'>Home</Link>
+          <Link to="/about" className='link'>About</Link>
         </div>
       </div>
       <img src={spotifyLogo} alt='Spotify Logo' className='w-24' />

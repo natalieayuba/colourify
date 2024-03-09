@@ -13,7 +13,7 @@ const DownloadScreen = ({
   const paletteRef = useRef(null);
 
   return (
-    <div className='mb-60 pt-10 sm:pt-32 gap-20 flex-wrap justify-center flex'>
+    <div className='pt-10 sm:pt-32 gap-20 flex-wrap justify-center flex'>
       <div className='shadow-lg scale-[0.3] sm:scale-50 mb-[-1344px] mr-[-756px] sm:mb-[-960px] sm:mr-[-540px] origin-top-left'>
         <Palette
           username={username}
