@@ -36,7 +36,7 @@ const CustomisationForm = ({
       <h2 className='text-3xl sm:text-4xl font-semibold mb-8'>
         Customise Image
       </h2>
-      <div className='flex flex-col gap-2 mb-8'>
+      <div className='flex flex-col gap-2 mb-8 items-start'>
         <label htmlFor='username'>Your name</label>
         <input
           type='text'
@@ -48,7 +48,7 @@ const CustomisationForm = ({
           required
         />
       </div>
-      <div className='flex flex-col gap-2 mb-8'>
+      <div className='flex flex-col gap-2 mb-8 items-start'>
         <label>Time range</label>
         <div className='flex gap-2 flex-wrap'>
           {timeRanges.map(({ timeRange, text }) => (
