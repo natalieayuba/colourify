@@ -1,6 +1,6 @@
-# Spotify Colours
+# Colourify
 
-Spotify Colours is a web application that generates a color palette from the album art of your most listened to albums on Spotify. Inspired by [Receiptify](https://github.com/michellexliu/receiptify) and [Spotify Profile](https://github.com/bchiang7/spotify-profile). The app can be viewed at [https://spotify-colors.herokuapp.com/](https://spotify-colors.herokuapp.com/).
+Colourify is a web application that generates a color palette from the album art of your most listened to albums on Spotify. Inspired by [Receiptify](https://github.com/michellexliu/receiptify) and [Spotify Profile](https://github.com/bchiang7/spotify-profile). The app can be viewed at [https://colourify.herokuapp.com/](https://colourify.herokuapp.com/).
 
 Main technologies:
 
