@@ -8,15 +8,16 @@ const CustomisationForm = ({
   paletteRef,
   selectedTimeRange,
   setSelectedTimeRange,
+  loading,
 }) => {
   const timeRanges = [
     {
       timeRange: 'short_term',
-      text: 'Last month',
+      text: 'Past month',
     },
     {
       timeRange: 'medium_term',
-      text: 'Last 6 months',
+      text: 'Past 6 months',
     },
     {
       timeRange: 'long_term',
@@ -58,6 +59,7 @@ const CustomisationForm = ({
               text={text}
               selectedTimeRange={selectedTimeRange}
               setSelectedTimeRange={setSelectedTimeRange}
+              loading={loading}
             />
           ))}
         </div>
@@ -66,7 +68,7 @@ const CustomisationForm = ({
         type='button'
         id='download-btn'
         className='w-full flex justify-center mt-12 sm:w-auto btn disabled:btn-disabled'
-        disabled={!username}
+        disabled={!username || loading}
         title={!username ? 'Please enter your name above.' : ''}
         onClick={() => downloadImage()}
       >

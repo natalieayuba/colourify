@@ -1,7 +1,7 @@
 import spotifyLogo from '../assets/images/Spotify_Logo_RGB_Black.png';
-import { ColorRing } from 'react-loader-spinner';
+import ProgressBar from './ProgressBar';
 
-const Palette = ({ username, paletteRef, tracks, loading }) => {
+const Palette = ({ username, paletteRef, tracks, loading, progress }) => {
   const title = `${username}${
     username.endsWith('s') ? `'` : `'s`
   } Colour Palette`;
@@ -19,7 +19,11 @@ const Palette = ({ username, paletteRef, tracks, loading }) => {
       </div>
       <div className='flex justify-center'>
         {loading ? (
-          <ColorRing />
+          <ProgressBar
+            value={progress}
+            label='Loading tracks...'
+            showPercentage
+          />
         ) : (
           <ol className='list-decimal'>
             {tracks.map((track) => (

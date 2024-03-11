@@ -15,3 +15,9 @@ describe('Title', () => {
     expect(title).toHaveTextContent(username + ending);
   });
 });
+
+// describe('Tracks', () => {
+//   test('displays all tracks', (username, ending) => {
+//     expect(true).toBe(true);
+//   });
+// });
