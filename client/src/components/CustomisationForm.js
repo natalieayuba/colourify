@@ -9,22 +9,24 @@ const CustomisationForm = ({
   selectedTimeRange,
   setSelectedTimeRange,
   loading,
+  controller,
+  setController,
 }) => {
   const timeRanges = [
     {
       timeRange: 'short_term',
-      text: 'Past month',
+      text: 'Last month',
     },
     {
       timeRange: 'medium_term',
-      text: 'Past 6 months',
+      text: 'Last 6 months',
     },
     {
       timeRange: 'long_term',
       text: 'All time',
     },
   ];
-
+  
   const downloadImage = () => {
     toPng(paletteRef.current).then((dataUrl) => {
       const filename = `${username.toLowerCase()}_colourify_palette.png`;
@@ -59,7 +61,8 @@ const CustomisationForm = ({
               text={text}
               selectedTimeRange={selectedTimeRange}
               setSelectedTimeRange={setSelectedTimeRange}
-              loading={loading}
+              controller={controller}
+              setController={setController}
             />
           ))}
         </div>

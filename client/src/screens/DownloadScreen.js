@@ -9,28 +9,32 @@ const DownloadScreen = () => {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [selectedTimeRange, setSelectedTimeRange] = useState('short_term');
+  const [controller, setController] = useState(new AbortController());
   const paletteRef = useRef(null);
   const limit = 50;
   const offset = 0;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async () =>
       await getCurrentUser().then((response) =>
         setUsername(response.data.display_name)
       );
-    };
     fetchData();
   }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       const url = `/me/top/tracks?limit=${limit}&offset=${offset}&time_range=${selectedTimeRange}`;
-      setLoading(true);
-      await getTopTracks(url, setProgress).then((response) =>
-        setTracks(response.data.items)
-      );
-      setLoading(false);
       setProgress(0);
+      setLoading(true);
+      await getTopTracks(url, setProgress, controller)
+        .then((response) => {
+          setTracks(response.data.items);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
     fetchData();
   }, [selectedTimeRange]);
@@ -53,6 +57,9 @@ const DownloadScreen = () => {
         selectedTimeRange={selectedTimeRange}
         setSelectedTimeRange={setSelectedTimeRange}
         loading={loading}
+        controller={controller}
+        setController={setController}
+        setLoading={setLoading}
       />
     </div>
   );

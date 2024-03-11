@@ -49,14 +49,17 @@ export const getCurrentUser = () => axios.get('/me');
  * https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
  * @returns Promise
  */
-export const getTopTracks = (url, setProgress, topTracks = []) =>
-  axios.get(url).then((response) => {
-    topTracks.push(...response.data.items);
-    setProgress(topTracks.length / response.data.total);
-    if (response.data.next != null) {
-      return getTopTracks(response.data.next, setProgress, topTracks);
-    } else {
-      response.data.items = topTracks;
-      return response;
-    }
-  });
+export const getTopTracks = (url, setProgress, controller, topTracks = []) => {
+  return axios
+    .get(url, { signal: controller.signal })
+    .then((response) => {
+      topTracks.push(...response.data.items);
+      setProgress(topTracks.length / response.data.total);
+      if (response.data.next != null) {
+        return getTopTracks(response.data.next, setProgress, controller, topTracks);
+      } else {
+        response.data.items = topTracks;
+        return response;
+      }
+    })
+};
