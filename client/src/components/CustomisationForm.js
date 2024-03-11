@@ -50,7 +50,7 @@ const CustomisationForm = ({
         />
       </div>
       <div className='flex flex-col gap-2 mb-8 items-start'>
-        <label>Time range</label>
+        <label>Show top albums from</label>
         <div className='flex gap-2 flex-wrap'>
           {timeRanges.map(({ timeRange, text }) => (
             <TimeRangeButton
