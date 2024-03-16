@@ -1,11 +1,20 @@
 import Palette from '../components/Palette';
 import CustomisationForm from '../components/CustomisationForm';
 import { useEffect, useState, useRef } from 'react';
-import { getCurrentUser, getTopTracks } from '../hooks/useSpotifyAPI';
+import {
+  getCurrentUser,
+  getPalettes,
+  getTopAlbums,
+  getTopTracks,
+} from '../hooks/useSpotifyAPI';
 
 const DownloadScreen = () => {
   const [username, setUsername] = useState('');
+  const [albumNameVisible, setAlbumNameVisible] = useState(false);
+  const [country, setCountry] = useState('');
   const [tracks, setTracks] = useState([]);
+  const [palettes, setPalettes] = useState([]);
+  const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [selectedTimeRange, setSelectedTimeRange] = useState('short_term');
@@ -16,28 +25,37 @@ const DownloadScreen = () => {
 
   useEffect(() => {
     const fetchData = async () =>
-      await getCurrentUser().then((response) =>
-        setUsername(response.data.display_name)
-      );
+      await getCurrentUser().then((response) => {
+        setUsername(response.data.display_name);
+        setCountry(response.data.country);
+      });
     fetchData();
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const url = `/me/top/tracks?limit=${limit}&offset=${offset}&time_range=${selectedTimeRange}`;
-      setProgress(0);
-      setLoading(true);
-      await getTopTracks(url, setProgress, controller)
-        .then((response) => {
-          setTracks(response.data.items);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
+    if (country) {
+      const fetchData = async () => {
+        const url = `/me/top/tracks?limit=${limit}&offset=${offset}&time_range=${selectedTimeRange}`;
+        setProgress(0);
+        setLoading(true);
+        // setAlbums(await getTopAlbums(url, setProgress, controller, country));
+        await getPalettes(url, setProgress, controller, country).then(({palettes, albums}) => {
+          setPalettes(palettes);
+          setAlbums(albums);
         });
-    };
-    fetchData();
-  }, [selectedTimeRange]);
+        setLoading(false);
+        // await getTopTracks(url, setProgress, controller, country)
+        //   .then((response) => {
+        //     setTracks(response.data.items);
+        //     setLoading(false);
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //   });
+      };
+      fetchData();
+    }
+  }, [selectedTimeRange, controller, country]);
 
   return (
     <div className='pt-10 sm:pt-32 gap-20 flex-wrap justify-center flex'>
@@ -48,6 +66,9 @@ const DownloadScreen = () => {
           tracks={tracks}
           loading={loading}
           progress={progress}
+          albums={albums}
+          palettes={palettes}
+          albumNameVisible={albumNameVisible}
         />
       </div>
       <CustomisationForm
@@ -60,6 +81,8 @@ const DownloadScreen = () => {
         controller={controller}
         setController={setController}
         setLoading={setLoading}
+        albumNameVisible={albumNameVisible}
+        setAlbumNameVisible={setAlbumNameVisible}
       />
     </div>
   );

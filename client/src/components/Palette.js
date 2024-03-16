@@ -1,7 +1,16 @@
 import spotifyLogo from '../assets/images/Spotify_Logo_RGB_Black.png';
 import ProgressBar from './ProgressBar';
 
-const Palette = ({ username, paletteRef, tracks, loading, progress }) => {
+const Palette = ({
+  username,
+  paletteRef,
+  tracks,
+  loading,
+  progress,
+  albums,
+  palettes,
+  albumNameVisible,
+}) => {
   const title = `${username}${
     username.endsWith('s') ? `'` : `'s`
   } Colour Palette`;
@@ -12,9 +21,11 @@ const Palette = ({ username, paletteRef, tracks, loading, progress }) => {
       ref={paletteRef}
     >
       <div className='flex justify-between items-baseline'>
-        <p className='font-bold text-4xl' id='title'>
-          {title}
-        </p>
+        {username && (
+          <p className='font-bold text-4xl' id='title'>
+            {title}
+          </p>
+        )}
         <p className='text-2xl'>colourify.com</p>
       </div>
       <div className='flex justify-center'>
@@ -25,14 +36,76 @@ const Palette = ({ username, paletteRef, tracks, loading, progress }) => {
             showPercentage
           />
         ) : (
-          <ol className='list-decimal'>
-            {tracks.map((track) => (
-              <li key={track.id}>
-                {track.artists[0].name} - {track.name} - {track.album.name} -{' '}
-                {track.album.album_type}
-              </li>
-            ))}
-          </ol>
+          <div className='flex h-[1300px] w-full'>
+            <div className='flex h-full justify-between flex-col flex-none mr-8'>
+              {albums.map((album) => {
+                const title = `${album.name} by ${album.artists[0].name}`;
+                return (
+                  <a
+                    id={album.id}
+                    href={album.external_urls.spotify}
+                    title={title}
+                    key={album.id}
+                  >
+                    <img
+                      src={album.images[0].url}
+                      className='w-[200px] h-[200px]'
+                      alt={`${title}} Album Cover`}
+                      id={album.id}
+                    />
+                    <p
+                      className={`album-title absolute mt-3 text-2xl${
+                        albumNameVisible ? '' : ' hidden'
+                      }`}
+                    >
+                      {title}
+                    </p>
+                  </a>
+                );
+              })}
+            </div>
+            <div className='flex h-full justify-between flex-col w-full'>
+              {palettes.map((swatches) => (
+                <div key={swatches} className='flex'>
+                  {swatches.map(([r, g, b]) => {
+                    const rgb = `${r},${g},${b}`;
+                    return (
+                      <div
+                        key={rgb}
+                        className={`h-[200px] min-w-6 flex-1`}
+                        style={{ backgroundColor: `rgb(${rgb})` }}
+                      ></div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
+          // tracks
+
+          // <ol className='list-decimal'>
+          //   {tracks.map((track) => (
+          //     <li key={track.id}>
+          //       {track.artists[0].name} - {track.name} - {track.album.name} -{' '}
+          //       {track.album.album_type}
+          //     </li>
+          //   ))}
+          // </ol>
+
+          // albums
+
+          // <ol className='list-decimal'>
+          //   {albums.map((album) => (
+          //     <li key={album.id}>
+          //       {album.name} - {album.artists[0].name}
+          //       <ol className='list-decimal list-inside'>
+          //         {album.tracks.map((track) => (
+          //           <li key={track.name}>{track.name}</li>
+          //         ))}
+          //       </ol>
+          //     </li>
+          //   ))}
+          // </ol>
         )}
       </div>
       <img
