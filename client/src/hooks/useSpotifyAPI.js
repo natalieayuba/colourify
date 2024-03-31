@@ -38,22 +38,6 @@ export const useAccessToken = () => {
   return accessToken;
 };
 
-const removeUnwantedTracks = (tracks) => {
-  const allowedAlbumTypes = ['EP', 'ALBUM', 'COMPILATION'];
-  const isAsmr = (track) =>
-    ['ASMR', 'Asmr'].some(
-      (asmr) =>
-        track.artists.some((artist) => artist.name.includes(asmr)) ||
-        track.album.name.includes(asmr) ||
-        track.name.includes(asmr)
-    );
-
-  return tracks.filter(
-    (track) =>
-      allowedAlbumTypes.includes(track.album.album_type) && !isAsmr(track)
-  );
-};
-
 /**
  * Get Current User's Profile
  * https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/
@@ -64,6 +48,10 @@ export const getCurrentUser = () => axios.get('/me');
 /**
  * Get User's Top Items (Tracks)
  * https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
+ * @param url The GET request url
+ * @param setProgress The setter for the loading bar's progress
+ * @param controller The abort controller for the request
+ * @param tracks The array of tracks to be populated
  * @returns Promise
  */
 export const getTopTracks = (url, setProgress, controller, tracks = []) => {
@@ -88,7 +76,31 @@ export const getTopTracks = (url, setProgress, controller, tracks = []) => {
 };
 
 /**
+ * Removes ASMR and excluded album types from data
+ * @param tracks An array of tracks
+ * @returns The given array of tracks without the unwanted tracks
+ */
+const removeUnwantedTracks = (tracks) => {
+  const allowedAlbumTypes = ['EP', 'ALBUM', 'COMPILATION'];
+  const isAsmr = (track) =>
+    ['ASMR', 'Asmr'].some(
+      (asmr) =>
+        track.artists.some((artist) => artist.name.includes(asmr)) ||
+        track.album.name.includes(asmr) ||
+        track.name.includes(asmr)
+    );
+
+  return tracks.filter(
+    (track) =>
+      allowedAlbumTypes.includes(track.album.album_type) && !isAsmr(track)
+  );
+};
+
+/**
  * Get the user's top albums from their top tracks
+ * @param url The GET request url
+ * @param setProgress The setter for the loading bar's progress
+ * @param controller The abort controller for the request
  * @returns An array of albums
  */
 export const getTopAlbums = async (url, setProgress, controller) => {
@@ -130,6 +142,13 @@ export const getTopAlbums = async (url, setProgress, controller) => {
   return albums;
 };
 
+/**
+ * Get colour palettes from the art of the user's top albums
+ * @param url The GET request url
+ * @param setProgress The setter for the loading bar's progress
+ * @param controller The abort controller for the request
+ * @returns An array of albums, an array of colour palettes
+ */
 export const getPalettes = async (url, setProgress, controller) => {
   const albums = await getTopAlbums(url, setProgress, controller);
   const colorThief = new ColorThief();
