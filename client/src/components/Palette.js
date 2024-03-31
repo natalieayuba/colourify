@@ -4,7 +4,6 @@ import ProgressBar from './ProgressBar';
 const Palette = ({
   username,
   paletteRef,
-  tracks,
   loading,
   progress,
   albums,
@@ -81,31 +80,6 @@ const Palette = ({
               ))}
             </div>
           </div>
-          // tracks
-
-          // <ol className='list-decimal'>
-          //   {tracks.map((track) => (
-          //     <li key={track.id}>
-          //       {track.artists[0].name} - {track.name} - {track.album.name} -{' '}
-          //       {track.album.album_type}
-          //     </li>
-          //   ))}
-          // </ol>
-
-          // albums
-
-          // <ol className='list-decimal'>
-          //   {albums.map((album) => (
-          //     <li key={album.id}>
-          //       {album.name} - {album.artists[0].name}
-          //       <ol className='list-decimal list-inside'>
-          //         {album.tracks.map((track) => (
-          //           <li key={track.name}>{track.name}</li>
-          //         ))}
-          //       </ol>
-          //     </li>
-          //   ))}
-          // </ol>
         )}
       </div>
       <img

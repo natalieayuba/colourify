@@ -1,14 +1,13 @@
 # Colourify
 
-Colourify is a web application that generates a color palette from the album art of your most listened to albums on Spotify. Inspired by [Receiptify](https://github.com/michellexliu/receiptify) and [Spotify Profile](https://github.com/bchiang7/spotify-profile). The app can be viewed at [https://colourify.herokuapp.com/](https://colourify.herokuapp.com/).
+Colourify is a web application that generates a color palette from the album art of your top albums on Spotify. Inspired by [Receiptify](https://github.com/michellexliu/receiptify) and [Spotify Profile](https://github.com/bchiang7/spotify-profile).
 
 Main technologies:
 
-- HTML, CSS and JavaScript
+- [Create React App](https://create-react-app.dev/)
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
-- [Handlebars](https://handlebarsjs.com/)
-- [Color Thief](https://lokeshdhakar.com/projects/color-thief/)
 - [Tailwind](https://tailwindcss.com/)
+- [Color Thief](https://lokeshdhakar.com/projects/color-thief/)
 
 ## Installation
 
@@ -34,7 +33,7 @@ You will need to register your app and get your own credentials from the [Spotif
 From a terminal:
 
 ```bash
-npm start
+npm run dev
 ```
 
 Then, open `http://localhost:8888` in a browser.

@@ -13,8 +13,6 @@ const Footer = () => {
         </p>
         <span className='text-gray-300'>•</span>
         <div className='flex gap-4'>
-          {/* ADD ONLCICKS TO HREFTS */}
-          <Link to="/" className='link'>Home</Link>
           <Link to="/about" className='link'>About</Link>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { saveAs } from 'file-saver';
 import { toPng } from 'html-to-image';
 import TimeRangeButton from './TimeRangeButton';
 
@@ -30,17 +29,19 @@ const CustomisationForm = ({
   ];
 
   const downloadImage = () => {
-    toPng(paletteRef.current).then((dataUrl) => {
-      const filename = `${username.toLowerCase()}_colourify_palette.png`;
-      saveAs(dataUrl, filename);
-    });
+    toPng(paletteRef.current, { cacheBust: true })
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.download = `${username.toLowerCase()}_colourify_palette.png`;
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
     <form className='w-[324px] sm:w-[520px]'>
-      <h2 className='text-3xl sm:text-4xl font-semibold mb-8'>
-        Customise
-      </h2>
+      <h2 className='text-3xl sm:text-4xl font-semibold mb-8'>Customise</h2>
       <div className='flex flex-col gap-2 mb-8 items-start'>
         <label htmlFor='username'>Your name</label>
         <input
@@ -77,8 +78,13 @@ const CustomisationForm = ({
             id='include-album-title-switch'
             className='opacity-0 w-0 h-0 peer'
             onClick={() => setAlbumNameVisible(!albumNameVisible)}
+            disabled={loading}
           />
-          <span className="absolute cursor-pointer top-0 bottom-0 left-0 right-0 bg-gray-300 duration-300 rounded-full peer-checked:bg-black before:absolute before:content-[''] before:h-[18px] before:w-[18px] before:left-[3px] before:bottom-[2px] before:bg-white before:duration-300 before:rounded-full peer-checked:before:translate-x-[16px]"></span>
+          <span
+            className={`absolute top-0 bottom-0 left-0 right-0 bg-gray-300 duration-300 rounded-full peer-checked:bg-black before:absolute before:content-[''] before:h-[18px] before:w-[18px] before:left-[3px] before:bottom-[2px] before:bg-white before:duration-300 before:rounded-full peer-checked:before:translate-x-[16px] ${
+              loading ? 'cursor-default' : 'cursor-pointer'
+            }`}
+          ></span>
         </label>
       </div>
       <button
