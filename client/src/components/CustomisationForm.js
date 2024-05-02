@@ -42,20 +42,18 @@ const CustomisationForm = ({
   return (
     <form className='w-[324px] sm:w-[520px]'>
       <h2 className='text-3xl sm:text-4xl font-semibold mb-8'>Customise</h2>
-      <div className='flex flex-col gap-2 mb-8 items-start'>
-        <label htmlFor='username'>Your name</label>
+      <label className='flex flex-col gap-2 mb-8'>
+        Your name
         <input
           type='text'
-          name='username'
-          id='username'
           className='border-2 w-full h-12 px-4 rounded-lg'
           defaultValue={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-      </div>
-      <div className='flex flex-col gap-2 mb-8 items-start'>
-        <label>Show top albums from</label>
+      </label>
+      <fieldset className='mb-8'>
+        <legend className='mb-2'>Show top albums from</legend>
         <div className='flex gap-2 flex-wrap'>
           {timeRanges.map(({ timeRange, text }) => (
             <TimeRangeButton
@@ -69,13 +67,12 @@ const CustomisationForm = ({
             />
           ))}
         </div>
-      </div>
-      <div className='flex gap-2 mb-8 justify-between'>
-        <label>Include artist and album name</label>
-        <label className='relative inline-block w-[40px] h-[22px]'>
+      </fieldset>
+      <label className='flex gap-2 justify-between mb-8'>
+        Include artist and album name
+        <div className='relative w-[40px] h-[22px]'>
           <input
             type='checkbox'
-            id='include-album-title-switch'
             className='opacity-0 w-0 h-0 peer'
             onClick={() => setAlbumNameVisible(!albumNameVisible)}
             disabled={loading}
@@ -85,8 +82,8 @@ const CustomisationForm = ({
               loading ? 'cursor-default' : 'cursor-pointer'
             }`}
           ></span>
-        </label>
-      </div>
+        </div>
+      </label>
       <button
         type='button'
         id='download-btn'

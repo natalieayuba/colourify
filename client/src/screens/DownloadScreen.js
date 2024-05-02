@@ -1,7 +1,12 @@
 import Palette from '../components/Palette';
 import CustomisationForm from '../components/CustomisationForm';
 import { useEffect, useState, useRef } from 'react';
-import { getCurrentUser, getPalettes } from '../hooks/useSpotifyAPI';
+import {
+  getCurrentUser,
+  getTopTracks,
+  getTopAlbums,
+  getPalettes,
+} from '../hooks/useSpotifyAPI';
 
 const DownloadScreen = () => {
   const [username, setUsername] = useState('');
@@ -27,13 +32,15 @@ const DownloadScreen = () => {
       const url = `/me/top/tracks?limit=50&offset=0&time_range=${selectedTimeRange}`;
       setProgress(0);
       setLoading(true);
-      await getPalettes(url, setProgress, controller).then(
-        ({ palettes, albums }) => {
-          setPalettes(palettes);
+      await getTopTracks(url, setProgress, controller)
+        .then(async (response) => {
+          let albums = getTopAlbums(response.data.items);
+          let palettes = await getPalettes(albums);
           setAlbums(albums);
-        }
-      );
-      setLoading(false);
+          setPalettes(palettes);
+          setLoading(false);
+        })
+        .catch((error) => console.error(error));
     };
     fetchData();
   }, [selectedTimeRange, controller]);

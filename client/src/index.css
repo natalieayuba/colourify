@@ -20,6 +20,6 @@ body {
   }
 
   .link {
-    @apply text-colourify-blue hover:brightness-75 hover:underline;
+    @apply text-sky-600 hover:underline;
   }
 }

@@ -7,8 +7,8 @@ import AboutScreen from './screens/AboutScreen';
 import PrivacyScreen from './screens/PrivacyScreen';
 
 const App = () => {
-  const accessToken = useAccessToken();
-
+  const {accessToken, setAccessToken} = useAccessToken();
+  
   return (
     <BrowserRouter>
       <div className='bg-grey-50 min-h-screen relative flex justify-center overflow-auto px-4'>
@@ -22,7 +22,7 @@ const App = () => {
             <Route path='/privacy' element={<PrivacyScreen />} />
           </Routes>
         </main>
-        <Footer accessToken={accessToken} />
+        <Footer accessToken={accessToken} setAccessToken={setAccessToken} />
       </div>
     </BrowserRouter>
   );

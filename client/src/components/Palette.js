@@ -16,77 +16,74 @@ const Palette = ({
 
   return (
     <div
-      className='bg-white w-[1080px] h-[1920px] px-[130px] py-[182px] flex flex-col justify-between'
+      className='bg-white w-[1080px] h-[1920px] p-[10%] flex justify-center items-center'
       ref={paletteRef}
     >
-      <div className='flex justify-between items-baseline'>
-        {username && (
+      <div className='flex flex-col justify-between w-[800px] h-[1500px] '>
+        <div className='flex items-baseline justify-between mb-16'>
           <p className='font-bold text-4xl' id='title'>
             {title}
           </p>
-        )}
-        <p className='text-2xl'>colourify.com</p>
-      </div>
-      <div className='flex justify-center'>
+          <p className='text-2xl'>colourify.herokuapp.com</p>
+        </div>
         {loading ? (
           <ProgressBar
             value={progress}
-            label='Loading tracks...'
+            label='Loading albums...'
             showPercentage
+            className='self-center'
           />
         ) : (
-          <div className='flex h-[1300px] w-full'>
-            <div className='flex h-full justify-between flex-col flex-none mr-8'>
-              {albums.map((album) => {
-                const title = `${album.name} by ${album.artists[0].name}`;
-                return (
+          <div className='flex-1 flex flex-col gap-16'>
+            {albums.map((album, index) => {
+              album.palette = palettes[index];
+              const title = `${album.artists[0].name} - ${album.name}`;
+              return (
+                <div className='flex-1 flex gap-6' key={album.id}>
                   <a
                     id={album.id}
                     href={album.external_urls.spotify}
                     title={title}
-                    key={album.id}
+                    className='h-full aspect-square relative'
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <img
                       src={album.images[0].url}
-                      className='w-[200px] h-[200px]'
-                      alt={`${title}} Album Cover`}
+                      alt={`${title} Album Cover`}
                       id={album.id}
+                      className='absolute'
                     />
                     <p
-                      className={`album-title absolute mt-3 text-2xl${
+                      className={`album-title absolute -bottom-12 text-2xl w-max${
                         albumNameVisible ? '' : ' hidden'
                       }`}
                     >
                       {title}
                     </p>
                   </a>
-                );
-              })}
-            </div>
-            <div className='flex h-full justify-between flex-col w-full'>
-              {palettes.map((swatches) => (
-                <div key={swatches} className='flex'>
-                  {swatches.map(([r, g, b]) => {
-                    const rgb = `${r},${g},${b}`;
-                    return (
+                  <div className='flex-1 flex'>
+                    {album.palette.map((swatch) => (
                       <div
-                        key={rgb}
-                        className={`h-[200px] min-w-6 flex-1`}
-                        style={{ backgroundColor: `rgb(${rgb})` }}
+                        key={swatch}
+                        className='flex-1'
+                        style={{
+                          backgroundColor: `rgb(${swatch.join(',')})`,
+                        }}
                       ></div>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         )}
+        <img
+          src={spotifyLogo}
+          alt='Spotify Logo'
+          className='w-[180px] self-center mt-24'
+        />
       </div>
-      <img
-        src={spotifyLogo}
-        alt='Spotify Logo'
-        className='w-[180px] self-center'
-      />
     </div>
   );
 };

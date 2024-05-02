@@ -35,7 +35,7 @@ export const useAccessToken = () => {
     }
   }, []);
 
-  return accessToken;
+  return { accessToken, setAccessToken };
 };
 
 /**
@@ -98,21 +98,14 @@ const removeUnwantedTracks = (tracks) => {
 
 /**
  * Get the user's top albums from their top tracks
- * @param url The GET request url
- * @param setProgress The setter for the loading bar's progress
- * @param controller The abort controller for the request
+ * @param topTracks An array of the user's top tracks
+ * @param total The total of topTracks
  * @returns An array of albums
  */
-export const getTopAlbums = async (url, setProgress, controller) => {
+export const getTopAlbums = (topTracks) => {
+  const total = topTracks.length;
   let albums = [];
   let album;
-  let topTracks;
-  let total;
-
-  await getTopTracks(url, setProgress, controller).then((response) => {
-    topTracks = response.data.items;
-    total = response.data.total;
-  });
 
   topTracks = removeUnwantedTracks(topTracks);
 
@@ -144,13 +137,10 @@ export const getTopAlbums = async (url, setProgress, controller) => {
 
 /**
  * Get colour palettes from the art of the user's top albums
- * @param url The GET request url
- * @param setProgress The setter for the loading bar's progress
- * @param controller The abort controller for the request
- * @returns An array of albums, an array of colour palettes
+ * @param albums The GET request url
+ * @returns An array of colour palettes
  */
-export const getPalettes = async (url, setProgress, controller) => {
-  const albums = await getTopAlbums(url, setProgress, controller);
+export const getPalettes = async (albums) => {
   const colorThief = new ColorThief();
   const palettes = [];
 
@@ -171,5 +161,5 @@ export const getPalettes = async (url, setProgress, controller) => {
     )
   );
 
-  return { albums, palettes };
+  return palettes;
 };

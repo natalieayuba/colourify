@@ -1,19 +1,50 @@
-const PrivacyScreen = () => {
-  return (
-    <div className='max-w-4xl pt-14'>
-      <h1 className='text-4xl font-semibold mb-4'>Privacy</h1>
-      {[...Array(4)].map((e, i) => (
-        <p key={i} className='mb-2'>
-          Consectetur consectetur minim incididunt dolore minim id in duis enim
-          labore fugiat consequat veniam laborum. Duis in magna enim ipsum
-          commodo duis est eu Lorem commodo excepteur minim et in. In pariatur
-          dolor laboris aliqua ex sint dolore et in mollit. Do est Lorem ad ea.
-          Ipsum minim laborum et excepteur. Ea pariatur id mollit magna dolor.
-          Sint aliquip in minim voluptate.
-        </p>
-      ))}
-    </div>
-  );
-};
+import PageLayout from '../components/PageLayout';
+
+const PrivacyScreen = () => (
+  <PageLayout heading='Privacy Policy'>
+    <p className='mb-6'>
+      Colourify uses the{' '}
+      <a
+        className='link'
+        href='https://developer.spotify.com/documentation/web-api'
+      >
+        Spotify Web API
+      </a>{' '}
+      to access data from your Spotify account. By using Colourify, you agree to
+      the use of your Spotify username and data about your top tracks
+      (used to generate your top albums).
+    </p>
+    <p className='mb-6'>
+      None of the data used by Colourify is stored, collected, or shared with
+      any third parties. The information is solely used to generate your colour
+      palette.
+    </p>
+    <p className='mb-2'>
+      If you would like to revoke Colourify's access to your Spotify account:
+    </p>
+    <ol className='list-decimal list-inside mb-2 pl-4'>
+      <li>
+        Log in to Spotify and go to the{' '}
+        <a className='link' href='https://www.spotify.com/account/apps/'>
+          Apps page
+        </a>
+        .
+      </li>
+      <li>Look for Colourify and click 'Remove Access'.</li>
+    </ol>
+    <p className='mb-6'>
+      This will remove all access Colourify has to your Spotify, so next time
+      you visit Colourify you will be asked to log in with your Spotify account
+      again and re-authorise Colourify’s access to your data.{' '}
+    </p>
+    <p className='mb-6'>
+      If you have any questions, feel free to{' '}
+      <a className='link' href='mailto:natalieayuba@hotmail.com'>
+        contact me
+      </a>
+      .
+    </p>
+  </PageLayout>
+);
 
 export default PrivacyScreen;

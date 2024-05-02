@@ -9,8 +9,8 @@ const TimeRangeButton = ({
   return (
     <label
       htmlFor={timeRange}
-      className={`bg-white-300 border-2 border-black font-normal px-4 py-2 rounded-full cursor-pointer hover:bg-black hover:text-white hover:duration-100${
-        timeRange === selectedTimeRange ? ' bg-black text-white' : ''
+      className={`bg-white-300 border-2 font-normal px-4 py-2 rounded-full cursor-pointer hover:bg-black hover:border-black hover:text-white hover:duration-100${
+        timeRange === selectedTimeRange ? ' bg-black text-white border-black' : ''
       }`}
     >
       <input
