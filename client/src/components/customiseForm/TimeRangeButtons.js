@@ -5,25 +5,16 @@ const TimeRangeButtons = ({
   setController,
 }) => {
   const timeRanges = [
-    {
-      timeRange: 'short_term',
-      text: 'Last month',
-    },
-    {
-      timeRange: 'medium_term',
-      text: 'Last 6 months',
-    },
-    {
-      timeRange: 'long_term',
-      text: 'All time',
-    },
+    ['short_term', 'Last month'],
+    ['medium_term', 'Last 6 months'],
+    ['long_term', 'All time'],
   ];
 
   return (
     <fieldset className='mb-8'>
       <legend className='mb-2'>Show top albums from</legend>
       <div className='flex gap-2 flex-wrap'>
-        {timeRanges.map(({ timeRange, text }) => (
+        {timeRanges.map(([timeRange, text]) => (
           <label
             key={timeRange}
             htmlFor={timeRange}

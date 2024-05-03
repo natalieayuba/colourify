@@ -35,7 +35,7 @@ const PrivacyScreen = () => (
     <p className='mb-6'>
       This will remove all access Colourify has to your Spotify, so next time
       you visit Colourify you will be asked to log in with your Spotify account
-      again and re-authorise Colourify’s access to your data.{' '}
+      again to re-authorise Colourify’s access to your data.{' '}
     </p>
     <p className='mb-6'>
       If you have any questions, feel free to{' '}

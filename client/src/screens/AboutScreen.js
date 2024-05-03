@@ -6,14 +6,14 @@ const AboutScreen = () => (
     <p className='mb-6'>
       Colourify is an open source tool that generates a colour palette from the
       album art of your top 5 albums on Spotify. In order to find your top
-      albums, Colourify groups your top tracks by album using the{' '}
+      albums, Colourify gets you top tracks using the{' '}
       <a
         className='link'
         href='https://developer.spotify.com/documentation/web-api'
       >
         Spotify Web API
       </a>
-      . Check out the{' '}
+      {' '}and groups them by album. Check out the{' '}
       <a href='https://github.com/nayuba/colourify' className='link'>
         source code on Github
       </a>{' '}
