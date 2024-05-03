@@ -1,5 +1,3 @@
-import Palette from '../components/Palette';
-import CustomisationForm from '../components/CustomisationForm';
 import { useEffect, useState, useRef } from 'react';
 import {
   getCurrentUser,
@@ -7,11 +5,18 @@ import {
   getTopAlbums,
   getPalettes,
 } from '../hooks/useSpotifyAPI';
+import Palette from '../components/palette/Palette';
+import ProgressBar from '../components/palette/ProgressBar';
+import CustomiseForm from '../components/customiseForm/CustomiseForm';
+import TimeRangeButtons from '../components/customiseForm/TimeRangeButtons';
+import ToggleSwitch from '../components/customiseForm/ToggleSwitch';
+import DownloadButton from '../components/customiseForm/DownloadButton';
+import UsernameTextBox from '../components/customiseForm/UsernameTextBox';
+import Albums from '../components/palette/Albums';
 
 const DownloadScreen = () => {
   const [username, setUsername] = useState('');
   const [albumNameVisible, setAlbumNameVisible] = useState(false);
-  const [palettes, setPalettes] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -36,8 +41,12 @@ const DownloadScreen = () => {
         .then(async (response) => {
           let albums = getTopAlbums(response.data.items);
           let palettes = await getPalettes(albums);
-          setAlbums(albums);
-          setPalettes(palettes);
+          setAlbums(
+            albums.map((album, index) => {
+              album.palette = palettes[index];
+              return album;
+            })
+          );
           setLoading(false);
         })
         .catch((error) => console.error(error));
@@ -52,23 +61,39 @@ const DownloadScreen = () => {
           username={username}
           paletteRef={paletteRef}
           loading={loading}
-          progress={progress}
-          albums={albums}
-          palettes={palettes}
-          albumNameVisible={albumNameVisible}
+          albums={
+            <Albums albums={albums} albumNameVisible={albumNameVisible} />
+          }
+          progressBar={
+            <ProgressBar value={progress} label='Loading albums...' />
+          }
         />
       </div>
-      <CustomisationForm
-        username={username}
-        setUsername={setUsername}
-        paletteRef={paletteRef}
-        selectedTimeRange={selectedTimeRange}
-        setSelectedTimeRange={setSelectedTimeRange}
-        controller={controller}
-        setController={setController}
-        loading={loading}
-        albumNameVisible={albumNameVisible}
-        setAlbumNameVisible={setAlbumNameVisible}
+      <CustomiseForm
+        usernameTextBox={
+          <UsernameTextBox username={username} setUsername={setUsername} />
+        }
+        timeRangeButtons={
+          <TimeRangeButtons
+            selectedTimeRange={selectedTimeRange}
+            setSelectedTimeRange={setSelectedTimeRange}
+            controller={controller}
+            setController={setController}
+          />
+        }
+        toggleSwitch={
+          <ToggleSwitch
+            albumNameVisible={albumNameVisible}
+            setAlbumNameVisible={setAlbumNameVisible}
+          />
+        }
+        downloadButton={
+          <DownloadButton
+            loading={loading}
+            paletteRef={paletteRef}
+            username={username}
+          />
+        }
       />
     </div>
   );

@@ -6,8 +6,7 @@ const LoginScreen = () => (
       Colourify
     </h1>
     <p className='text-xl sm:text-2xl max-w-lg text-center mb-12'>
-      Generate a colour palette based on the art of your favourite albums on
-      Spotify
+      Generate a colour palette based on the art of your top albums on Spotify
     </p>
     <a href='http://localhost:8888/login' className='btn bg-spotify-green'>
       <img src={spotifyIcon} alt='Spotify Icon' className='w-8 h-8' />

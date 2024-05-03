@@ -1,7 +1,6 @@
-import React from 'react';
-
-const ProgressBar = ({ value, showPercentage, label }) => {
+const ProgressBar = ({ value, label }) => {
   const percentage = value * 100;
+  
   return (
     <div className='flex gap-5 flex-col items-center text-3xl'>
       <p>{label}</p>
@@ -11,7 +10,7 @@ const ProgressBar = ({ value, showPercentage, label }) => {
           style={{ width: `${percentage}%` }}
         ></div>
       </div>
-      <span className={showPercentage ? 'inline-block' : 'hidden'}>
+      <span className='inline-block'>
         {`${Math.floor(percentage)}%`}
       </span>
     </div>

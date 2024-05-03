@@ -2,10 +2,11 @@
  * A basic node.js script that performs the Authorization Code oAuth2 flow to
  * authenticate against a user's Spotify account.
  *
- * For more information, read
+ * For more information, read:
  * https://developer.spotify.com/documentation/web-api/tutorials/code-flow
- * For code examples, view
- * https://github.com/spotify/web-api-examples/tree/master/authorization
+ *
+ * For the official Spotify code example, view:
+ * https://github.com/spotify/web-api-examples/blob/master/authorization/authorization_code/app.js
  */
 
 const express = require('express');
@@ -21,7 +22,7 @@ const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const frontend_port = process.env.PORT;
 const backend_port = process.env.BACKEND_PORT;
-const frontend_uri = `http://localhost:${frontend_port}/`;
+const frontend_uri = `http://localhost:${frontend_port}`;
 const redirect_uri = `http://localhost:${backend_port}/callback`;
 
 /**
@@ -45,38 +46,39 @@ app.get('/', function (req, res) {
   res.render(path.resolve(__dirname, '../client/build/index.html'));
 });
 
+/**
+ * Requests authorisation from the user
+ * @param req The request
+ * @param res The response
+ */
 app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  // your application requests authorization
   const scope = 'user-read-private user-read-email user-top-read';
   res.redirect(
-    'https://accounts.spotify.com/authorize?' +
-      querystring.stringify({
-        response_type: 'code',
-        client_id,
-        scope,
-        redirect_uri,
-        state,
-      })
+    `https://accounts.spotify.com/authorize?${querystring.stringify({
+      response_type: 'code',
+      client_id,
+      scope,
+      redirect_uri,
+      state,
+    })}`
   );
 });
 
+/**
+ * Requests refresh and access tokens after checking the state parameter
+ * @param req The request
+ * @param res The response
+ */
 app.get('/callback', (req, res) => {
-  // your application requests refresh and access tokens after checking the
-  // state parameter
   const code = req.query.code || null;
   const state = req.query.state || null;
   const storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if (state === null || state !== storedState) {
-    res.redirect(
-      '/#' +
-        querystring.stringify({
-          error: 'state_mismatch',
-        })
-    );
+    res.redirect(`/#${querystring.stringify({ error: 'state_mismatch' })}`);
   } else {
     res.clearCookie(stateKey);
     const authOptions = {
@@ -88,9 +90,9 @@ app.get('/callback', (req, res) => {
       },
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
-        Authorization:
-          'Basic ' +
-          new Buffer.from(client_id + ':' + client_secret).toString('base64'),
+        Authorization: `Basic ${new Buffer.from(
+          `${client_id}:${client_secret}`
+        ).toString('base64')}`,
       },
       json: true,
     };
@@ -98,38 +100,33 @@ app.get('/callback', (req, res) => {
     request.post(authOptions, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         const { access_token, refresh_token } = body;
-
-        // pass the token to the browser to make requests from here
         res.redirect(
-          frontend_uri +
-            '#' +
-            querystring.stringify({
-              access_token,
-              refresh_token,
-            })
+          `${frontend_uri}/#${querystring.stringify({
+            access_token,
+            refresh_token,
+          })}`
         );
       } else {
-        res.redirect(
-          '/#' +
-            querystring.stringify({
-              error: 'invalid_token',
-            })
-        );
+        res.redirect(`/#${querystring.stringify({ error: 'invalid_token' })}`);
       }
     });
   }
 });
 
+/**
+ * Requests access token from refresh token
+ * @param req The request
+ * @param res The response
+ */
 app.get('/refresh_token', (req, res) => {
-  // requesting access token from refresh token
   const { refresh_token } = req.query;
   const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
-      Authorization:
-        'Basic ' +
-        new Buffer.from(client_id + ':' + client_secret).toString('base64'),
+      Authorization: `Basic ${new Buffer.from(
+        `${client_id}:${client_secret}`
+      ).toString('base64')}`,
     },
     form: {
       grant_type: 'refresh_token',

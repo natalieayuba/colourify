@@ -16,10 +16,19 @@ body {
   }
 
   .btn-disabled {
-    @apply opacity-30 brightness-100 shadow-none;
+    @apply opacity-30 brightness-100 shadow-none cursor-not-allowed;
   }
 
   .link {
     @apply text-sky-600 hover:underline;
   }
+
+  .selected-time-range {
+    @apply bg-black text-white border-black font-normal;
+  }
+
+  .hovered-time-range {
+    @apply hover:bg-gray-100 hover:duration-100;
+  }
+
 }
