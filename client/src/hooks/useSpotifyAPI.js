@@ -29,7 +29,12 @@ export const useAccessToken = () => {
     const { access_token, refresh_token, error } = getHashParams();
     if (error) {
       console.error(error);
-      setAccessToken(refresh_token);
+      getRefreshToken(refresh_token)
+        .then((data) => {
+          setAccessToken(data);
+          window.location.reload();
+        })
+        .catch((e) => console.error(e));
     } else {
       setAccessToken(access_token);
     }
@@ -37,6 +42,14 @@ export const useAccessToken = () => {
 
   return { accessToken, setAccessToken };
 };
+
+/**
+ * Get refresh token
+ * @param refresh_token The refresh token retrieved from hash params
+ * @returns Promise
+ */
+const getRefreshToken = (refresh_token) =>
+  axios.get(`/refresh_token?refresh_token=${refresh_token}`);
 
 /**
  * Get Current User's Profile
