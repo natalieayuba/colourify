@@ -32,9 +32,7 @@ const Albums = ({ albums, albumNameVisible }) => {
                 <div
                   key={swatch}
                   className='flex-1'
-                  style={{
-                    backgroundColor: `rgb(${swatch.join(',')})`,
-                  }}
+                  style={{ backgroundColor: `rgb(${swatch})` }}
                 ></div>
               ))}
             </div>

@@ -11,7 +11,6 @@ import CustomiseForm from '../components/customiseForm/CustomiseForm';
 import TimeRangeButtons from '../components/customiseForm/TimeRangeButtons';
 import ToggleSwitch from '../components/customiseForm/ToggleSwitch';
 import DownloadButton from '../components/customiseForm/DownloadButton';
-import UsernameTextBox from '../components/customiseForm/UsernameTextBox';
 import Albums from '../components/palette/Albums';
 
 const DownloadScreen = () => {
@@ -70,9 +69,6 @@ const DownloadScreen = () => {
         />
       </div>
       <CustomiseForm
-        usernameTextBox={
-          <UsernameTextBox username={username} setUsername={setUsername} />
-        }
         timeRangeButtons={
           <TimeRangeButtons
             selectedTimeRange={selectedTimeRange}
@@ -83,6 +79,7 @@ const DownloadScreen = () => {
         }
         toggleSwitch={
           <ToggleSwitch
+            loading={loading}
             albumNameVisible={albumNameVisible}
             setAlbumNameVisible={setAlbumNameVisible}
           />

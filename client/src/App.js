@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import AboutScreen from './screens/AboutScreen';
 import PrivacyScreen from './screens/PrivacyScreen';
-import { useState } from 'react';
+import NotFoundScreen from './screens/404';
 
 const App = () => {
   const { accessToken, setAccessToken } = useAccessToken();
@@ -21,6 +21,7 @@ const App = () => {
             />
             <Route path='/about' element={<AboutScreen />} />
             <Route path='/privacy' element={<PrivacyScreen />} />
+            <Route path='*' element={<NotFoundScreen />}/>
           </Routes>
         </main>
         <Footer accessToken={accessToken} setAccessToken={setAccessToken} />

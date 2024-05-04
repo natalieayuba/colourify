@@ -6,13 +6,13 @@ const ToggleSwitch = ({ loading, albumNameVisible, setAlbumNameVisible }) => {
         <input
           type='checkbox'
           name='showAlbumName'
-          className='opacity-0 w-0 h-0 peer disabled:cursor-not-allowed'
+          className='opacity-0 w-0 h-0 peer'
           onClick={() => setAlbumNameVisible(!albumNameVisible)}
           disabled={loading}
         />
         <span
           className={`toggle-switch ${
-            loading ? 'cursor-default' : 'cursor-pointer'
+            loading ? 'cursor-not-allowed' : 'cursor-pointer'
           }`}
         ></span>
       </div>

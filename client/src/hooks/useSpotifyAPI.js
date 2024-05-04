@@ -150,7 +150,7 @@ export const getTopAlbums = (topTracks) => {
 
 /**
  * Get colour palettes from the art of the user's top albums
- * @param albums The GET request url
+ * @param albums An array of albums
  * @returns An array of colour palettes
  */
 export const getPalettes = async (albums) => {
