@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import PageLayout from '../components/PageLayout';
 
-const AboutScreen = () => {
+const About = () => {
   return (
     <PageLayout heading='About Colourify'>
       <p className='mb-6'>
@@ -35,4 +35,4 @@ const AboutScreen = () => {
   );
 };
 
-export default AboutScreen;
+export default About;

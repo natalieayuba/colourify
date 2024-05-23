@@ -13,7 +13,7 @@ import ToggleSwitch from '../components/customise-form/ToggleSwitch';
 import DownloadButton from '../components/customise-form/DownloadButton';
 import Albums from '../components/palette/Albums';
 
-const DownloadScreen = () => {
+const Download = () => {
   const [username, setUsername] = useState('');
   const [albumNameVisible, setAlbumNameVisible] = useState(false);
   const [albums, setAlbums] = useState([]);
@@ -96,4 +96,4 @@ const DownloadScreen = () => {
   );
 };
 
-export default DownloadScreen;
+export default Download;

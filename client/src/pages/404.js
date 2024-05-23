@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NotFoundScreen = () => {
+const NotFound = () => {
   return (
     <div className='text-center flex flex-col items-center justify-center h-full '>
       <h1 className='text-9xl font-semibold mb-4'>
@@ -12,4 +12,4 @@ const NotFoundScreen = () => {
   );
 };
 
-export default NotFoundScreen;
+export default NotFound;

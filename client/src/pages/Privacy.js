@@ -1,6 +1,6 @@
 import PageLayout from '../components/PageLayout';
 
-const PrivacyScreen = () => {
+const Privacy = () => {
   return (
     <PageLayout heading='Privacy Policy'>
       <p className='mb-6'>
@@ -42,4 +42,4 @@ const PrivacyScreen = () => {
   );
 };
 
-export default PrivacyScreen;
+export default Privacy;
