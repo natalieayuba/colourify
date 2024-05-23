@@ -2,13 +2,12 @@ import { Link } from "react-router-dom";
 
 const NotFoundScreen = () => {
   return (
-    <div className='text-center flex flex-col items-center pt-40'>
-      <h1 className='text-7xl font-semibold mb-2'>
+    <div className='text-center flex flex-col items-center justify-center h-full '>
+      <h1 className='text-9xl font-semibold mb-4'>
         404
       </h1>
-      <p className="text-2xl mb-2">Not found</p>
-      <p>Uh oh! The resource you requested does not exist.</p>
-      <Link to="/" className='btn mt-8'>Return to home</Link>
+      <p className="text-2xl mb-2">Page not found</p>
+      <Link to="/" className='btn mt-8'>Go home</Link>
     </div>
   );
 };

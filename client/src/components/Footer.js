@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import spotifyLogo from '../images/Spotify_Logo_RGB_Black.png';
 
 const Footer = ({ accessToken, setAccessToken }) => {
   const navlinks = [

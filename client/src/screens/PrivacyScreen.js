@@ -38,13 +38,6 @@ const PrivacyScreen = () => {
         you visit Colourify you will be asked to log in with your Spotify
         account again to re-authorise Colourify’s access to your data.{' '}
       </p>
-      <p className='mb-6'>
-        If you have any questions, feel free to{' '}
-        <a className='link' href='mailto:natalieayuba@hotmail.com'>
-          contact me
-        </a>
-        .
-      </p>
     </PageLayout>
   );
 };

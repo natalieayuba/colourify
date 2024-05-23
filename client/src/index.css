@@ -8,7 +8,7 @@ body {
 
 @layer components {
   .btn {
-    @apply text-xl font-medium px-12 py-6 rounded-lg text-white flex gap-4 items-center justify-center bg-black hover:brightness-95 hover:shadow-lg;
+    @apply text-xl font-medium px-10 py-5 rounded-lg text-white flex gap-4 items-center justify-center bg-black transition duration-200 hover:shadow-lg;
   }
 
   .btn-disabled {

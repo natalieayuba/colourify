@@ -7,7 +7,12 @@ module.exports = {
     fontFamily: {
       sans: ['Merriweather Sans', 'sans-serif'],
     },
-    extend: { colors },
+    extend: {
+      colors,
+      backgroundImage: {
+        'radial-gradient': `radial-gradient(${colors['spotify-green-darker']}, transparent)`,
+      },
+    },
   },
   plugins: [],
 };

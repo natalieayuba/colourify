@@ -5,6 +5,7 @@ module.exports = {
   image: '%PUBLIC_URL%/images/og-image.png',
   colors: {
     'spotify-green': '#1db954',
+    'spotify-green-darker': '#1aa84c',
     'light-grey': '#f9fafb',
     blue: '#0173b7',
   },

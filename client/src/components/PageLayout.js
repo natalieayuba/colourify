@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const PageLayout = ({ heading, children }) => {
   return (
-    <div className='max-w-2xl pt-24'>
+    <div className='max-w-2xl pt-12 md:pt-24'>
       <Link to='/' className='link text-sm'>
         🡠 Back to home
       </Link>

@@ -14,7 +14,7 @@ const App = () => {
     <BrowserRouter>
       <MetaTags />
       <div className='min-h-screen relative flex justify-center overflow-auto px-6'>
-        <main className='mb-52'>
+        <main className='mb-32'>
           <Routes>
             <Route
               path='/'

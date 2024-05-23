@@ -1,4 +1,4 @@
-import spotifyIcon from '../images/Spotify_Icon_RGB_Black.png';
+import spotifyIcon from '../images/Spotify_Icon_RGB_White.png';
 import examplePalettes from '../images/example-palettes.png';
 import { description } from '../config';
 
@@ -13,12 +13,12 @@ const LoginScreen = () => {
       </p>
       <a
         href='http://localhost:8888/login'
-        className='btn bg-spotify-green text-black mb-8'
+        className='btn bg-spotify-green bg-radial-gradient mb-8'
       >
         <img
           src={spotifyIcon}
           alt='Spotify Icon'
-          className='w-8 h-8 text-black'
+          className='w-6 h-6'
           loading='eager'
         />
         Log in with Spotify
@@ -27,6 +27,7 @@ const LoginScreen = () => {
         src={examplePalettes}
         alt='Example Colourify Palettes'
         loading='eager'
+        className='pointer-events-none'
       />
     </div>
   );

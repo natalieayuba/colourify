@@ -15,7 +15,7 @@ const AboutScreen = () => {
           Spotify Web API
         </a>{' '}
         and groups them by album. Check out the{' '}
-        <a href='https://github.com/nayuba/colourify' className='link'>
+        <a href='https://github.com/natalieayuba/colourify' className='link'>
           source code on Github
         </a>{' '}
         to see how this works.
@@ -25,6 +25,10 @@ const AboutScreen = () => {
         <Link to={'/privacy'} className='link'>
           privacy policy
         </Link>
+        , and if you have any questions or issues, feel free to{' '}
+        <a className='link' href='mailto:natalieayuba@hotmail.com'>
+          contact me
+        </a>
         .
       </p>
     </PageLayout>
