@@ -8,13 +8,13 @@ const LoginScreen = () => {
         Colourify
       </h1>
       <p className='text-xl sm:text-2xl max-w-lg text-center mb-12'>
-        Generate a colour palette based on the art of your top albums on Spotify
+        Generate a colour palette from the art of your top albums on Spotify
       </p>
       <a href='http://localhost:8888/login' className='btn bg-spotify-green'>
         <img src={spotifyIcon} alt='Spotify Icon' className='w-8 h-8' />
         Log in with Spotify
       </a>
-      <div className='mt-10 sm:mt-20 max-w-[944px]'>
+      <div className='mt-12'>
         <img src={examplePalettes} alt='Example Colourify Palettes' />
       </div>
     </div>

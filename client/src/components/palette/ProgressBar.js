@@ -1,6 +1,5 @@
 const ProgressBar = ({ value, label }) => {
   const percentage = value * 100;
-  
   return (
     <div className='flex gap-5 flex-col items-center text-3xl'>
       <p>{label}</p>

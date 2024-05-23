@@ -17,8 +17,7 @@ const DownloadButton = ({ paletteRef, username, loading }) => {
       type='button'
       id='download-btn'
       className='w-full sm:w-auto flex justify-center mt-12 btn disabled:btn-disabled'
-      disabled={!username || loading}
-      title={!username ? 'Please enter your name above.' : ''}
+      disabled={loading}
       onClick={() => downloadImage()}
     >
       Download image

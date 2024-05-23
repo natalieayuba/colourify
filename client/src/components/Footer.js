@@ -37,7 +37,7 @@ const Footer = ({ accessToken, setAccessToken }) => {
           ))}
         </div>
       </div>
-      <img src={spotifyLogo} alt='Spotify Logo' className='w-20 mx-auto mt-2' />
+      <img src={spotifyLogo} alt='Spotify Logo' className='w-20 mx-auto mt-4' />
     </footer>
   );
 };
