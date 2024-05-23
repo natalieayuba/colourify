@@ -1,21 +1,21 @@
 const ToggleSwitch = ({ loading, albumNameVisible, setAlbumNameVisible }) => {
   return (
-    <label className='flex gap-2 justify-between mb-8'>
+    <label className='flex gap-2 justify-between items-center mb-8'>
       Include artist and album name
-      <div className='relative w-[40px] h-[22px]'>
-        <input
-          type='checkbox'
-          name='showAlbumName'
-          className='opacity-0 w-0 h-0 peer'
-          onClick={() => setAlbumNameVisible(!albumNameVisible)}
-          disabled={loading}
-        />
-        <span
-          className={`toggle-switch ${
-            loading ? 'cursor-not-allowed' : 'cursor-pointer'
-          }`}
-        ></span>
-      </div>
+      <input
+        type='checkbox'
+        name='showAlbumName'
+        disabled={loading}
+        onClick={() => setAlbumNameVisible(!albumNameVisible)}
+        className='hidden peer'
+      />
+      <span
+        className={`w-10 h-5 bg-gray-200 rounded-full transition-all duration-300 peer-checked:bg-black peer-checked:before:border-black peer-checked:before:translate-x-5 before:w-5 before:h-5 before:bg-white before:absolute before:rounded-full before:border-2 before:border-gray-200 before:transition-all before:duration-300 ${
+          loading
+            ? 'cursor-not-allowed'
+            : 'cursor-pointer hover:bg-gray-300 hover:before:border-gray-300'
+        }`}
+      ></span>
     </label>
   );
 };

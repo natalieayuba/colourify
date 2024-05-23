@@ -1,5 +1,5 @@
-import spotifyIcon from '../assets/images/Spotify_Icon_RGB_Black.png';
-import examplePalettes from '../assets/images/example-palettes.png';
+import spotifyIcon from '../images/Spotify_Icon_RGB_Black.png';
+import examplePalettes from '../images/example-palettes.png';
 import { description } from '../config';
 
 const LoginScreen = () => {

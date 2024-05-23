@@ -1,4 +1,4 @@
-import spotifyLogo from '../../assets/images/Spotify_Logo_RGB_Black.png';
+import spotifyLogo from '../../images/Spotify_Logo_RGB_Black.png';
 
 const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
   const heading = `${username}${
