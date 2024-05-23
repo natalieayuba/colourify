@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+const { colors } = require('./src/config');
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {
-      colors: {
-        'spotify-green': '#1DB954',
-      },
+    fontFamily: {
+      sans: ['Merriweather Sans', 'sans-serif'],
     },
+    extend: { colors },
   },
   plugins: [],
 };

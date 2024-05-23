@@ -15,7 +15,7 @@ const Footer = ({ accessToken, setAccessToken }) => {
   };
 
   return (
-    <footer className='text-sm absolute mt-10 px-6 py-10 bottom-0 w-full border-t'>
+    <footer className='text-sm absolute px-6 py-6 bottom-0 w-full '>
       <div className='flex gap-2 flex-wrap justify-center'>
         <p>
           Created by{' '}
@@ -37,7 +37,11 @@ const Footer = ({ accessToken, setAccessToken }) => {
           ))}
         </div>
       </div>
-      <img src={spotifyLogo} alt='Spotify Logo' className='w-20 mx-auto mt-4' />
+      <img
+        src={spotifyLogo}
+        alt='Spotify Logo'
+        className='w-20 h-auto mx-auto mt-3'
+      />
     </footer>
   );
 };

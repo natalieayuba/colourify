@@ -16,7 +16,6 @@ const Albums = ({ albums, albumNameVisible }) => {
               <img
                 src={album.images[0].url}
                 alt={`${title} Album Cover`}
-                id={album.id}
                 className='absolute'
               />
               <p

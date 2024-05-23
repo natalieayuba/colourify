@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  font-family: 'Merriweather Sans', sans-serif;
   font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer components {
@@ -20,15 +16,7 @@ body {
   }
 
   .link {
-    @apply text-sky-600 hover:underline;
-  }
-
-  .selected-time-range {
-    @apply bg-black text-white border-black font-normal;
-  }
-
-  .hovered-time-range {
-    @apply hover:bg-gray-100 hover:duration-100;
+    @apply text-blue hover:underline;
   }
 
   .toggle-switch {

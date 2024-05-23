@@ -7,10 +7,10 @@ import {
 } from '../hooks/useSpotifyAPI';
 import Palette from '../components/palette/Palette';
 import ProgressBar from '../components/palette/ProgressBar';
-import CustomiseForm from '../components/customiseForm/CustomiseForm';
-import TimeRangeButtons from '../components/customiseForm/TimeRangeButtons';
-import ToggleSwitch from '../components/customiseForm/ToggleSwitch';
-import DownloadButton from '../components/customiseForm/DownloadButton';
+import CustomiseForm from '../components/customise-form/CustomiseForm';
+import TimeRangeButtons from '../components/customise-form/TimeRangeButtons';
+import ToggleSwitch from '../components/customise-form/ToggleSwitch';
+import DownloadButton from '../components/customise-form/DownloadButton';
 import Albums from '../components/palette/Albums';
 
 const DownloadScreen = () => {
@@ -54,7 +54,7 @@ const DownloadScreen = () => {
   }, [selectedTimeRange, controller]);
 
   return (
-    <div className='pt-10 sm:pt-32 gap-20 flex-wrap justify-center flex'>
+    <div className='pt-10 sm:pt-24 gap-20 flex-wrap justify-center flex'>
       <div className='shadow-[0_4px_30px_0px_rgba(0,0,0,0.05)] scale-[0.3] sm:scale-50 mb-[-1344px] mr-[-756px] sm:mb-[-960px] sm:mr-[-540px] origin-top-left'>
         <Palette
           username={username}

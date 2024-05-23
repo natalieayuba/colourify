@@ -6,14 +6,15 @@ import Footer from './components/Footer';
 import AboutScreen from './screens/AboutScreen';
 import PrivacyScreen from './screens/PrivacyScreen';
 import NotFoundScreen from './screens/404';
+import MetaTags from './components/MetaTags';
 
 const App = () => {
   const { accessToken, setAccessToken } = useAccessToken();
-
   return (
     <BrowserRouter>
-      <div className='bg-grey-50 min-h-screen relative flex justify-center overflow-auto px-4'>
-        <main className='mb-60'>
+      <MetaTags />
+      <div className='min-h-screen relative flex justify-center overflow-auto px-6'>
+        <main className='mb-52'>
           <Routes>
             <Route
               path='/'
@@ -21,7 +22,7 @@ const App = () => {
             />
             <Route path='/about' element={<AboutScreen />} />
             <Route path='/privacy' element={<PrivacyScreen />} />
-            <Route path='*' element={<NotFoundScreen />}/>
+            <Route path='*' element={<NotFoundScreen />} />
           </Routes>
         </main>
         <Footer accessToken={accessToken} setAccessToken={setAccessToken} />

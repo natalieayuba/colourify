@@ -18,10 +18,10 @@ const TimeRangeButtons = ({
           <label
             key={timeRange}
             htmlFor={timeRange}
-            className={`bg-white-300 border-2 px-4 py-2 rounded-full cursor-pointer ${
+            className={`border-2 px-4 py-2 rounded-full cursor-pointer ${
               timeRange === selectedTimeRange
-                ? 'selected-time-range'
-                : 'hovered-time-range'
+                ? 'bg-black text-white border-black font-normal'
+                : 'hover:bg-gray-50 hover:duration-100 hover:border-gray-300'
             }`}
           >
             <input
