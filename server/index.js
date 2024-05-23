@@ -20,10 +20,9 @@ require('dotenv').config();
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
-const frontend_port = process.env.PORT;
-const backend_port = process.env.BACKEND_PORT;
-const frontend_uri = `http://localhost:${frontend_port}`;
-const redirect_uri = `http://localhost:${backend_port}/callback`;
+const redirect_uri = process.env.REDIRECT_URI || 'http://localhost:8888/callback';
+const frontend_uri = process.env.FRONTEND_URI || 'http://localhost:3000';
+const port = process.env.PORT || 8888;
 
 /**
  * Generates a random string containing numbers and letters
@@ -38,7 +37,7 @@ const stateKey = 'spotify_auth_state';
 const app = express();
 
 app
-  .use(express.static(__dirname + '../client/build'))
+  .use(express.static(`${__dirname}../client/build`))
   .use(cors())
   .use(cookieParser());
 
@@ -146,6 +145,6 @@ app.get('/refresh_token', (req, res) => {
   });
 });
 
-app.listen(backend_port, () => {
-  console.log('Listening on port ' + backend_port);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
