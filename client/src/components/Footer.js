@@ -14,7 +14,7 @@ const Footer = ({ accessToken, setAccessToken }) => {
   };
 
   return (
-    <footer className='text-sm absolute px-6 py-6 bottom-0 w-full flex gap-2 flex-wrap justify-center'>
+    <footer className='mt-16 text-sm px-6 py-6 bottom-0 w-full flex gap-2 flex-wrap justify-center'>
       <p>
         Created by{' '}
         <a href='http://natalieayuba.github.io' className='link'>

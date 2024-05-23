@@ -10,12 +10,12 @@ import MetaTags from './components/MetaTags';
 
 const App = () => {
   const { accessToken, setAccessToken } = useAccessToken();
-  
+
   return (
     <BrowserRouter>
       <MetaTags />
-      <div className='min-h-screen relative flex justify-center overflow-auto px-6'>
-        <main className='mb-32'>
+      <div className='min-h-screen relative flex flex-col justify-between'>
+        <main className='px-6 flex flex-col items-center flex-1'>
           <Routes>
             <Route path='/' element={accessToken ? <Download /> : <Login />} />
             <Route path='/about' element={<About />} />

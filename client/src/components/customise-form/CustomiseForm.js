@@ -5,7 +5,7 @@ const CustomiseForm = ({
 }) => {
   return (
     <form className='w-[324px] sm:w-[520px]'>
-      <h2 className='text-4xl font-semibold mb-8'>Customise</h2>
+      <h2 className='text-3xl sm:text-4xl font-semibold mb-8'>Customise</h2>
       {timeRangeButtons}
       {toggleSwitch}
       {downloadButton}
