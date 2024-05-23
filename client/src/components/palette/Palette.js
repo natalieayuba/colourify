@@ -12,9 +12,11 @@ const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
     >
       <div className='flex flex-col justify-between w-[800px] h-[1500px] '>
         <div className='flex items-baseline justify-between mb-16'>
-          <p className='font-bold text-4xl' id='title'>
-            {heading}
-          </p>
+          {username && (
+            <p className='font-bold text-4xl' id='title'>
+              {heading}
+            </p>
+          )}
           <p className='text-2xl'>colourify.herokuapp.com</p>
         </div>
         {loading ? progressBar : albums}

@@ -17,6 +17,7 @@ const Albums = ({ albums, albumNameVisible }) => {
                 src={album.images[0].url}
                 alt={`${title} Album Cover`}
                 className='absolute'
+                loading='eager'
               />
               <p
                 className={`album-title absolute -bottom-12 text-2xl w-max${

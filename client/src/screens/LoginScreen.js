@@ -19,16 +19,14 @@ const LoginScreen = () => {
           src={spotifyIcon}
           alt='Spotify Icon'
           className='w-8 h-8 text-black'
+          loading='eager'
         />
         Log in with Spotify
       </a>
       <img
         src={examplePalettes}
         alt='Example Colourify Palettes'
-        rel='preload'
-        fetchpriority='high'
-        as='image'
-        type='image/png'
+        loading='eager'
       />
     </div>
   );
