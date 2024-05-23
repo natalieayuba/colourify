@@ -10,6 +10,7 @@ import MetaTags from './components/MetaTags';
 
 const App = () => {
   const { accessToken, setAccessToken } = useAccessToken();
+  
   return (
     <BrowserRouter>
       <MetaTags />

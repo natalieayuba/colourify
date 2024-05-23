@@ -149,7 +149,7 @@ export const getTopAlbums = (topTracks) => {
 };
 
 /**
- * Get colour palettes from the art of the user's top albums
+ * Get colour palettes from the cover art of the user's top albums
  * @param albums An array of albums
  * @returns An array of colour palettes
  */
@@ -168,9 +168,9 @@ export const getPalettes = async (albums) => {
 
   await Promise.all(
     albums.map((album) => waitForImg(album.images[0].url))
-  ).then((albumArts) =>
-    albumArts.forEach((albumArt) =>
-      palettes.push(colorThief.getPalette(albumArt, 5))
+  ).then((albumCovers) =>
+    albumCovers.forEach((coverArt) =>
+      palettes.push(colorThief.getPalette(coverArt, 5))
     )
   );
 

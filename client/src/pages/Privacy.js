@@ -11,9 +11,9 @@ const Privacy = () => {
         >
           Spotify Web API
         </a>{' '}
-        to access data from your Spotify account. By using Colourify, you agree
+        to access some data from your Spotify account. By using Colourify, you agree
         to the use of your Spotify username and data about your top tracks (used
-        to generate your top albums).
+        to estimate your top albums).
       </p>
       <p className='mb-6'>
         None of the data used by Colourify is stored, collected, or shared with
@@ -31,7 +31,7 @@ const Privacy = () => {
           </a>
           .
         </li>
-        <li>Look for Colourify and click 'Remove Access'.</li>
+        <li>Look for Colourify and click 'Remove Access'.</li>
       </ol>
       <p className='mb-6'>
         This will remove all access Colourify has to your Spotify, so next time
