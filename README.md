@@ -13,6 +13,7 @@
   <a href="https://app.netlify.com/sites/mycolourify/deploys">
     <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/f9456101-3782-4a92-9b67-dbe786fba204/deploy-status">
   </a>
+  <br/>
   <img src="https://raw.githubusercontent.com/natalieayuba/colourify/main/public/images/og-image.png" alt="Colourify Preview" style="border-radius:8px; margin-top:16px;" />
 </div>
 
