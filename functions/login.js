@@ -1,13 +1,16 @@
 const querystring = require('querystring');
 const crypto = require('crypto');
-const { client_id, redirect_uri } = require('./config');
+const { client_id, redirect_uri, env } = require('./config');
 
 const generateRandomString = (length) =>
   crypto.randomBytes(60).toString('hex').slice(0, length);
 
+const stateKey = 'spotify_auth_state';
+
 exports.handler = async (event, context) => {
   const state = generateRandomString(16);
-  const cookie = `spotify_auth_state=${state}; Secure; HttpOnly`;
+  const cookieString = env === 'development' ? '' : '; Secure; HttpOnly';
+  const stateCookie = `${stateKey}=${state}${cookieString}`;
   const scope = 'user-read-private user-read-email user-top-read';
 
   return {
@@ -17,13 +20,12 @@ exports.handler = async (event, context) => {
         {
           response_type: 'code',
           client_id,
-          show_dialog: true,
           scope,
           redirect_uri,
           state,
         }
       )}`,
-      'Set-Cookie': cookie,
+      'Set-Cookie': stateCookie,
       'Cache-Control': 'no-cache',
     },
   };
