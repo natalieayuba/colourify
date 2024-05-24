@@ -21,8 +21,8 @@ require('dotenv').config({ path: '../.env' });
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const port = process.env.PORT || 8888;
-const redirect_uri = `${process.env.DOMAIN || `http://localhost:${port}`}/callback`;
-const base_uri = process.env.DOMAIN || 'http://localhost:3000';
+const redirect_uri = `${process.env.URL || `http://localhost:${port}`}/callback`;
+const base_uri = process.env.URL || 'http://localhost:3000';
 
 /**
  * Generates a random string containing numbers and letters
