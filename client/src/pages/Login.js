@@ -1,13 +1,10 @@
 import spotifyIcon from '../images/Spotify_Icon_RGB_White.png';
 import examplePalettes from '../images/example-palettes.png';
-import { title, description } from '../config';
+import { title, description, domain } from '../config';
 
 const Login = () => {
-  const loginUrl = `${
-    process.env.REACT_APP_PRODUCTION_URI ||
-    process.env.REACT_APP_DEVELOPMENT_URI
-  }/login`;
-  
+  const loginUrl = `${domain || 'http://localhost:8888'}/login`;
+
   return (
     <div id='login' className='flex flex-col items-center pt-32'>
       <h1 className='text-6xl sm:text-7xl font-semibold text-center mb-6'>

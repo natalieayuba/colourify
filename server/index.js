@@ -15,17 +15,14 @@ const crypto = require('crypto');
 const cors = require('cors');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv');
-const dotenvExpand = require('dotenv-expand');
-dotenvExpand.expand(dotenv.config({ path: '../client/.env' }));
+
+require('dotenv').config({ path: '../.env' });
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
-const redirect_uri = `${
-  process.env.DOMAIN || process.env.REACT_APP_DEVELOPMENT_URI
-}/callback`;
-const base_uri = process.env.DOMAIN || process.env.REACT_APP_FRONTEND_URI;
-const port = process.env.PORT || process.env.REACT_APP_PORT;
+const port = process.env.PORT || 8888;
+const redirect_uri = `${process.env.DOMAIN || `http://localhost:${port}`}/callback`;
+const base_uri = process.env.DOMAIN || 'http://localhost:3000';
 
 /**
  * Generates a random string containing numbers and letters

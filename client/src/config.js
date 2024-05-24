@@ -1,5 +1,6 @@
 module.exports = {
   title: 'Colourify',
+  domain: undefined,
   description:
     'Generate a colour palette from the cover art of your top albums on Spotify',
   image: '%PUBLIC_URL%/images/og-image.png',
