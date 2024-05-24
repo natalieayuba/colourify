@@ -3,6 +3,11 @@ import examplePalettes from '../images/example-palettes.png';
 import { title, description } from '../config';
 
 const Login = () => {
+  const loginUrl = `${
+    process.env.REACT_APP_PRODUCTION_URI ||
+    process.env.REACT_APP_DEVELOPMENT_URI
+  }/login`;
+  
   return (
     <div id='login' className='flex flex-col items-center pt-32'>
       <h1 className='text-6xl sm:text-7xl font-semibold text-center mb-6'>
@@ -12,7 +17,7 @@ const Login = () => {
         {description}
       </p>
       <a
-        href='http://localhost:8888/login'
+        href={loginUrl}
         className='btn bg-spotify-green bg-radial-gradient mb-8'
       >
         <img
