@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 302,
       headers: {
-        Location: `/#${querystring.stringify({ error: 'state_mismatch' })}`,
+        Location: `${base_uri}/#${querystring.stringify({ error: 'state_mismatch' })}`,
         'Cache-Control': 'no-cache',
       },
     };
@@ -57,7 +57,7 @@ exports.handler = async (event, context) => {
         return {
           statusCode: 302,
           headers: {
-            Location: `/#${querystring.stringify({ error: 'invalid_token' })}`,
+            Location: `${base_uri}/#${querystring.stringify({ error: 'invalid_token' })}`,
             'Cache-Control': 'no-cache',
           },
         };
