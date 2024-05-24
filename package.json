@@ -1,23 +1,50 @@
 {
   "name": "colourify",
   "version": "0.1.0",
-  "description": "Script to run both server and client concurrently",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nayuba/colourify.git"
+  "private": true,
+  "author": "Natalie Ayuba",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "colorthief": "^2.4.0",
+    "dotenv": "^16.4.5",
+    "html-to-image": "^1.11.11",
+    "querystring": "^0.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "5.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "npm run dev --prefix server",
-    "client": "npm start --prefix client",
-    "start": "npm run dev --prefix server",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd client/ && npm install --production && npm run build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "keywords": [],
-  "author": "Natalie Ayuba",
-  "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "tailwindcss": "^3.4.1"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!axios)/"
+    ]
   }
 }

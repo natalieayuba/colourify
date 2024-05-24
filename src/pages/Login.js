@@ -3,10 +3,6 @@ import examplePalettes from '../images/example-palettes.png';
 import { title, description, domain } from '../config';
 
 const Login = () => {
-  const loginUrl = `${
-    process.env.NODE_ENV === 'production' ? domain : 'http://localhost:8888'
-  }/login`;
-
   return (
     <div id='login' className='flex flex-col items-center pt-32'>
       <h1 className='text-6xl sm:text-7xl font-semibold text-center mb-6'>
@@ -16,7 +12,7 @@ const Login = () => {
         {description}
       </p>
       <a
-        href={loginUrl}
+        href='/.netlify/functions/login'
         className='btn bg-spotify-green bg-radial-gradient mb-8'
       >
         <img

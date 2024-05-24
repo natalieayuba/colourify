@@ -1,4 +1,4 @@
-import { domain } from '../../config';
+import { url } from '../../config';
 import spotifyLogo from '../../images/Spotify_Logo_RGB_Black.png';
 
 const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
@@ -18,7 +18,7 @@ const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
               {heading}
             </p>
           )}
-          <p className='text-2xl'>{domain.replace('https://', '')}</p>
+          <p className='text-2xl'>{url}</p>
         </div>
         {loading ? progressBar : albums}
         <img
