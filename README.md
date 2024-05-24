@@ -13,11 +13,13 @@
   <a href="https://app.netlify.com/sites/mycolourify/deploys">
     <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/f9456101-3782-4a92-9b67-dbe786fba204/deploy-status">
   </a>
+  <br />
+  <br />
   <img src="https://raw.githubusercontent.com/natalieayuba/colourify/main/public/images/og-image.png" alt="Colourify Preview" style="border-radius:8px; margin-top:16px;" />
 </div>
 
 ## About Colourify
-Colourify is a serverless React app that uses the Spotify Web API to get the user's top tracks and groups them by albums, then generates a colour scheme for each of the top five album covers. Inspired by [Receiptify](https://receiptify.herokuapp.com/), [Instafest](https://www.instafest.app), [Spotify Profile](https://spotify-profile.herokuapp.com/), and [Spotify Serverless Auth](https://serverless-spotify-auth.netlify.app/).
+Colourify is a serverless React app that uses the Spotify Web API to get the user's top tracks and groups them by albums, then generates a colour scheme for each of the top five album covers. Inspired by [Receiptify](https://github.com/michellexliu/receiptify), [Spotify Profile](https://github.com/bchiang7/spotify-profile), and [Spotify Serverless Auth](https://github.com/JonoMacC/serverless-spotify-auth).
 
 Built with:
 
