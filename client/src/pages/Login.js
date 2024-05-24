@@ -3,7 +3,9 @@ import examplePalettes from '../images/example-palettes.png';
 import { title, description, domain } from '../config';
 
 const Login = () => {
-  const loginUrl = `${domain || 'http://localhost:8888'}/login`;
+  const loginUrl = `${
+    process.env.NODE_ENV === 'production' ? domain : 'http://localhost:8888'
+  }/login`;
 
   return (
     <div id='login' className='flex flex-col items-center pt-32'>

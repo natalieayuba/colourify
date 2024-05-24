@@ -1,9 +1,10 @@
+import { domain } from '../../config';
 import spotifyLogo from '../../images/Spotify_Logo_RGB_Black.png';
 
 const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
   const heading = `${username}${
     username.endsWith('s') ? `'` : `'s`
-  } Colour Palette`;
+  } Colourify Palette`;
 
   return (
     <div
@@ -17,7 +18,7 @@ const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
               {heading}
             </p>
           )}
-          <p className='text-2xl'>colourify.herokuapp.com</p>
+          <p className='text-2xl'>{domain.replace('https://', '')}</p>
         </div>
         {loading ? progressBar : albums}
         <img
