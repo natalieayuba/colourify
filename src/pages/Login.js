@@ -4,7 +4,7 @@ import { title, description } from '../config';
 
 const Login = () => {
   return (
-    <div className='flex flex-col items-center pt-20 my-auto'>
+    <div className='flex flex-col items-center pt-24 my-auto'>
       <h1 className='text-6xl sm:text-7xl font-semibold text-center mb-6'>
         {title}
       </h1>

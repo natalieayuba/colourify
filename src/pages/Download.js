@@ -54,7 +54,7 @@ const Download = () => {
   }, [selectedTimeRange, controller]);
 
   return (
-    <div className='pt-10 sm:pt-24 gap-20 flex-wrap justify-center flex'>
+    <div className='py-10 sm:pt-24 gap-20 flex-wrap justify-center flex'>
       <div className='shadow-[0_4px_30px_0px_rgba(0,0,0,0.05)] scale-[0.3] sm:scale-50 mb-[-1344px] mr-[-756px] sm:mb-[-960px] sm:mr-[-540px] origin-top-left'>
         <Palette
           username={username}
