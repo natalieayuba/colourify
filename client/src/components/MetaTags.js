@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { description, title, image, colors } from '../config';
+import { description, title, image } from '../config';
 
 const MetaTags = () => {
   return (
@@ -14,7 +14,6 @@ const MetaTags = () => {
         <meta itemprop='description' content={description} />
         <meta property='og:image' content={image} />
         <meta itemprop='image' content={image} />
-        <meta name='theme-color' content={colors['light-grey']} />
       </Helmet>
     </HelmetProvider>
   );
