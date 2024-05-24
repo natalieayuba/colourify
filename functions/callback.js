@@ -1,11 +1,11 @@
 const axios = require('axios');
+const querystring = require('querystring');
 const {
   client_id,
   client_secret,
   redirect_uri,
   base_uri,
 } = require('./config');
-const querystring = require('querystring');
 
 exports.handler = async (event, context) => {
   const { code, state } = event.queryStringParameters || null;

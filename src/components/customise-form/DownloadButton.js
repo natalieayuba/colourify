@@ -16,7 +16,7 @@ const DownloadButton = ({ paletteRef, username, loading }) => {
     <button
       type='button'
       id='download-btn'
-      className='w-full sm:w-auto flex justify-center mt-12 btn disabled:btn-disabled hover:opacity-90'
+      className='w-full sm:w-auto flex justify-center mt-12 btn disabled:btn-disabled enabled:hover:opacity-90'
       disabled={loading}
       onClick={() => downloadImage()}
       title='Download image'
