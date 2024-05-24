@@ -14,14 +14,13 @@ const Footer = ({ accessToken, setAccessToken }) => {
   };
 
   return (
-    <footer className='mt-16 text-sm px-6 py-6 bottom-0 w-full flex gap-2 flex-wrap justify-center'>
-      <p>
+    <footer className='mt-16 text-sm p-6 bottom-0 gap-y-1 w-full items-center flex flex-col min-[404px]:flex-row justify-center'>
+      <p className={`min-[404px]:after:content-['•'] after:text-gray-300 min-[404px]:after:mx-3`}>
         Created by{' '}
         <a href='http://natalieayuba.github.io' className='link'>
           Natalie Ayuba
         </a>
       </p>
-      <span className='text-gray-300'>•</span>
       <div className='flex gap-4'>
         {navlinks.map(([to, name]) => (
           <Link
