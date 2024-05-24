@@ -7,9 +7,7 @@ const generateRandomString = (length) =>
 
 exports.handler = async (event, context) => {
   const state = generateRandomString(16);
-  const stateKey = 'spotify_auth_state';
-  const cookieString = process.env.NETLIFY_DEV ? '' : '; Secure; HttpOnly';
-  const stateCookie = `${stateKey}=${state}${cookieString}`;
+  const cookie = `spotify_auth_state=${state}; Secure; HttpOnly`;
   const scope = 'user-read-private user-read-email user-top-read';
 
   return {
@@ -19,12 +17,13 @@ exports.handler = async (event, context) => {
         {
           response_type: 'code',
           client_id,
+          show_dialog: true,
           scope,
           redirect_uri,
           state,
         }
       )}`,
-      'Set-Cookie': stateCookie,
+      'Set-Cookie': cookie,
       'Cache-Control': 'no-cache',
     },
   };

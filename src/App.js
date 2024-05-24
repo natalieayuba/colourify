@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
-import NotFound from './pages/404';
 import MetaTags from './components/MetaTags';
 
 const App = () => {
@@ -20,7 +19,6 @@ const App = () => {
             <Route path='/' element={accessToken ? <Download /> : <Login />} />
             <Route path='/about' element={<About />} />
             <Route path='/privacy' element={<Privacy />} />
-            <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
         <Footer accessToken={accessToken} setAccessToken={setAccessToken} />
