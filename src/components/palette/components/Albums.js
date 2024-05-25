@@ -18,9 +18,10 @@ const Albums = ({ albums, albumNameVisible }) => {
                 alt={`${title} Album Cover`}
                 className='absolute'
                 loading='eager'
+                crossOrigin='anonymous'
               />
               <p
-                className={`album-title absolute -bottom-12 text-2xl w-max${
+                className={`h-16 flex items-center album-title absolute -bottom-16 text-2xl w-max${
                   albumNameVisible ? '' : ' hidden'
                 }`}
               >

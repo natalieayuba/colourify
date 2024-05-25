@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-weight: 300;
-  background-color: white;
+@layer base {
+  body {
+    @apply font-light bg-white;
+  }
+  
+  img {
+    @apply inline-block;
+  }
 }
 
 @layer components {

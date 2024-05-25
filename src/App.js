@@ -6,12 +6,14 @@ import Footer from './components/Footer';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
 import MetaTags from './components/MetaTags';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   const { accessToken, setAccessToken } = useAccessToken();
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <MetaTags />
       <div className='min-h-screen relative flex flex-col justify-between'>
         <main className='px-6 flex flex-col items-center flex-1'>

@@ -6,12 +6,12 @@ import {
   getPalettes,
 } from '../hooks/useSpotifyAPI';
 import Palette from '../components/palette/Palette';
-import ProgressBar from '../components/palette/ProgressBar';
+import ProgressBar from '../components/palette/components/ProgressBar';
 import CustomiseForm from '../components/customise-form/CustomiseForm';
-import TimeRangeButtons from '../components/customise-form/TimeRangeButtons';
-import ToggleSwitch from '../components/customise-form/ToggleSwitch';
-import DownloadButton from '../components/customise-form/DownloadButton';
-import Albums from '../components/palette/Albums';
+import TimeRangeButtons from '../components/customise-form/components/TimeRangeButtons';
+import ToggleSwitch from '../components/customise-form/components/ToggleSwitch';
+import DownloadButton from '../components/customise-form/components/DownloadButton';
+import Albums from '../components/palette/components/Albums';
 
 const Download = () => {
   const [username, setUsername] = useState('');

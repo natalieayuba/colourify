@@ -169,8 +169,8 @@ export const getPalettes = async (albums) => {
   await Promise.all(
     albums.map((album) => waitForImg(album.images[0].url))
   ).then((albumCovers) =>
-    albumCovers.forEach((coverArt) =>
-      palettes.push(colorThief.getPalette(coverArt, 5))
+    albumCovers.forEach((albumCover) =>
+      palettes.push(colorThief.getPalette(albumCover, 5))
     )
   );
 

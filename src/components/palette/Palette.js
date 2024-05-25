@@ -4,19 +4,20 @@ import spotifyLogo from '../../images/Spotify_Logo_RGB_Black.png';
 const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
   const heading = `${username}${
     username.endsWith('s') ? `'` : `'s`
-  } Colourify Palette`;
+  } Colour Palette`;
 
   return (
     <div
       className='bg-white w-[1080px] h-[1920px] p-[10%] flex justify-center items-center'
       ref={paletteRef}
+      id='palette'
     >
       <div className='flex flex-col justify-between w-[800px] h-[1500px] '>
         <div className='flex items-baseline justify-between mb-16'>
           {username && (
-            <p className='font-bold text-4xl' id='title'>
+            <h1 className='font-bold text-4xl' id='title'>
               {heading}
-            </p>
+            </h1>
           )}
           <p className='text-2xl'>{url}</p>
         </div>
@@ -24,7 +25,7 @@ const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
         <img
           src={spotifyLogo}
           alt='Spotify Logo'
-          className='w-[180px] self-center mt-24'
+          className='w-1/5 h-auto self-center mt-24'
         />
       </div>
     </div>
