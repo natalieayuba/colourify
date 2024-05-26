@@ -15,7 +15,7 @@
   </a>
   <br />
   <br />
-  <img src="https://raw.githubusercontent.com/natalieayuba/colourify/main/public/images/og-image.png" alt="Colourify Preview" style="border-radius:8px; margin-top:16px;" />
+  <img src="./public/images/og-image.png" alt="Colourify Preview" />
 </div>
 
 ## About Colourify
