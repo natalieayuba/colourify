@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -11,6 +12,7 @@ module.exports = {
       black: '#121212',
       white: '#fff',
       blue: '#0077CC',
+      gray: colors.gray,
     },
     backgroundImage: {
       'darker-center': 'radial-gradient(#00000030 40%, transparent)',

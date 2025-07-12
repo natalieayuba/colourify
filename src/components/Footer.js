@@ -17,7 +17,7 @@ export const Footer = ({ accessToken, setAccessToken }) => {
   return (
     <footer className='mt-12 text-sm p-6 bottom-0 gap-y-1 w-full items-center flex flex-col min-[404px]:flex-row justify-center'>
       <p
-        className={`min-[404px]:after:content-['•'] after:text-black/50 min-[404px]:after:mx-3`}
+        className={`min-[404px]:after:content-['•'] after:text-gray-300 min-[404px]:after:mx-3`}
       >
         Created by{' '}
         <Link url={config.portfolio} text='Natalie Ayuba' opensNewTab />

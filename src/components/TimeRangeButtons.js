@@ -20,7 +20,7 @@ export const TimeRangeButtons = ({
           className={`border-2 px-4 py-2 rounded-full cursor-pointer ${
             timeRange === selectedTimeRange
               ? 'bg-black text-white border-black font-normal'
-              : 'hover:bg-black/50 hover:duration-100 hover:border-black/50'
+              : 'hover:bg-gray-50 hover:duration-100 hover:border-gray-300'
           }`}
         >
           <input

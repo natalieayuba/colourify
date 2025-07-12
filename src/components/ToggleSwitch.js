@@ -13,10 +13,10 @@ export const ToggleSwitch = ({
       className='hidden peer'
     />
     <span
-      className={`w-10 h-5 bg-black/50 rounded-full transition-all duration-150 peer-checked:bg-black peer-checked:before:border-black peer-checked:before:translate-x-5 before:w-5 before:h-5 before:bg-white before:absolute before:rounded-full before:border-2 before:border-black/50 before:transition-all before:duration-150 ${
+      className={`w-10 h-5 bg-gray-300 rounded-full transition-all duration-150 peer-checked:bg-black peer-checked:before:border-black peer-checked:before:translate-x-5 before:w-5 before:h-5 before:bg-white before:absolute before:rounded-full before:border-2 before:border-gray-300 before:transition-all before:duration-150 ${
         loading
           ? 'cursor-not-allowed opacity-30'
-          : 'cursor-pointer hover:bg-opacity-60 hover:before:border-opacity-60 hover:bg-black/50 hover:before:border-black/50gr'
+          : 'cursor-pointer hover:bg-opacity-60 hover:before:border-opacity-60 hover:bg-gray-400 hover:before:border-gray-400'
       }`}
     />
   </label>
