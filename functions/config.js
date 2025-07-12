@@ -11,5 +11,5 @@ module.exports = {
   client_secret,
   base_uri,
   redirect_uri,
-  env
+  env,
 };

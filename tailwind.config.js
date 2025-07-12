@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const { colors } = require('./src/config');
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -7,12 +6,14 @@ module.exports = {
     fontFamily: {
       sans: ['Merriweather Sans', 'sans-serif'],
     },
-    extend: {
-      colors,
-      backgroundImage: {
-        'radial-gradient': `radial-gradient(${colors['spotify-green-darker']}, transparent)`,
-      },
+    colors: {
+      'spotify-green': '#1ed760',
+      black: '#121212',
+      white: '#fff',
+      blue: '#0077CC',
+    },
+    backgroundImage: {
+      'darker-center': 'radial-gradient(#00000030 40%, transparent)',
     },
   },
-  plugins: [],
 };

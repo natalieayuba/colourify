@@ -6,7 +6,7 @@
   body {
     @apply font-light bg-white;
   }
-  
+
   img {
     @apply inline-block;
   }
@@ -17,11 +17,13 @@
     @apply text-xl font-medium px-10 py-5 rounded-lg text-white flex gap-4 items-center justify-center bg-black transition duration-200 hover:shadow-lg;
   }
 
-  .btn-disabled {
-    @apply opacity-30 brightness-100 shadow-none cursor-not-allowed;
-  }
-
   .link {
     @apply text-blue hover:underline;
+  }
+}
+
+@layer utilities {
+  .btn-disabled {
+    @apply opacity-30 brightness-100 shadow-none cursor-not-allowed;
   }
 }

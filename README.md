@@ -8,7 +8,7 @@
     <br />
     <a href="https://mycolourify.netlify.app/">View demo</a>
     ·
-    <a href="https://natalieayuba.github.io/projects/colourify">Read case study</a>
+    <a href="https://natalieayuba.com/projects/colourify">Read case study</a>
   </p>
   <a href="https://app.netlify.com/sites/mycolourify/deploys">
     <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/f9456101-3782-4a92-9b67-dbe786fba204/deploy-status">
@@ -19,6 +19,7 @@
 </div>
 
 ## About Colourify
+
 Colourify is a serverless React app that uses the Spotify Web API to get the user's top tracks and groups them by albums, then generates a colour scheme for each of the top five album covers. Inspired by [Receiptify](https://github.com/michellexliu/receiptify), [Spotify Profile](https://github.com/bchiang7/spotify-profile), and [Spotify Serverless Auth](https://github.com/JonoMacC/serverless-spotify-auth).
 
 Built with:

@@ -1,6 +1,6 @@
 import html2canvas from 'html2canvas';
 
-const DownloadButton = ({ paletteRef, username, loading }) => {
+export const DownloadButton = ({ paletteRef, username, loading }) => {
   const downloadImage = async () => {
     html2canvas(paletteRef.current.parentElement, {
       allowTaint: true,
@@ -20,12 +20,10 @@ const DownloadButton = ({ paletteRef, username, loading }) => {
       id='download-btn'
       className='w-full sm:w-auto flex justify-center mt-12 btn disabled:btn-disabled enabled:hover:opacity-90'
       disabled={loading}
-      onClick={() => downloadImage()}
+      onClick={downloadImage}
       title='Download image'
     >
       Download image
     </button>
   );
 };
-
-export default DownloadButton;

@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { client_id, client_secret } = require('./config');
 
-exports.handler = async function (event, context) {
+exports.handler = async function (event, _) {
   const { refresh_token } = event.queryStringParameters;
 
   const authOptions = {

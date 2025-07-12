@@ -5,15 +5,14 @@ import {
   getTopAlbums,
   getPalettes,
 } from '../hooks/useSpotifyAPI';
-import Palette from '../components/palette/Palette';
-import ProgressBar from '../components/palette/components/ProgressBar';
-import CustomiseForm from '../components/customise-form/CustomiseForm';
-import TimeRangeButtons from '../components/customise-form/components/TimeRangeButtons';
-import ToggleSwitch from '../components/customise-form/components/ToggleSwitch';
-import DownloadButton from '../components/customise-form/components/DownloadButton';
-import Albums from '../components/palette/components/Albums';
+import {
+  ToggleSwitch,
+  TimeRangeButtons,
+  DownloadButton,
+  Palette,
+} from '../components';
 
-const Download = () => {
+export const Download = () => {
   const [username, setUsername] = useState('');
   const [albumNameVisible, setAlbumNameVisible] = useState(false);
   const [albums, setAlbums] = useState([]);
@@ -38,8 +37,8 @@ const Download = () => {
       setLoading(true);
       await getTopTracks(url, setProgress, controller)
         .then(async (response) => {
-          let albums = getTopAlbums(response.data.items);
-          let palettes = await getPalettes(albums);
+          const albums = getTopAlbums(response.data.items);
+          const palettes = await getPalettes(albums);
           setAlbums(
             albums.map((album, index) => {
               album.palette = palettes[index];
@@ -60,40 +59,30 @@ const Download = () => {
           username={username}
           paletteRef={paletteRef}
           loading={loading}
-          albums={
-            <Albums albums={albums} albumNameVisible={albumNameVisible} />
-          }
-          progressBar={
-            <ProgressBar value={progress} label='Loading albums...' />
-          }
+          albums={albums}
+          progress={progress}
+          albumNameVisible={albumNameVisible}
         />
       </div>
-      <CustomiseForm
-        timeRangeButtons={
-          <TimeRangeButtons
-            selectedTimeRange={selectedTimeRange}
-            setSelectedTimeRange={setSelectedTimeRange}
-            controller={controller}
-            setController={setController}
-          />
-        }
-        toggleSwitch={
-          <ToggleSwitch
-            loading={loading}
-            albumNameVisible={albumNameVisible}
-            setAlbumNameVisible={setAlbumNameVisible}
-          />
-        }
-        downloadButton={
-          <DownloadButton
-            loading={loading}
-            paletteRef={paletteRef}
-            username={username}
-          />
-        }
-      />
+      <form className='w-[324px] sm:w-[520px]'>
+        <h2 className='text-3xl sm:text-4xl font-semibold mb-8'>Customise</h2>
+        <TimeRangeButtons
+          selectedTimeRange={selectedTimeRange}
+          setSelectedTimeRange={setSelectedTimeRange}
+          controller={controller}
+          setController={setController}
+        />
+        <ToggleSwitch
+          loading={loading}
+          albumNameVisible={albumNameVisible}
+          setAlbumNameVisible={setAlbumNameVisible}
+        />
+        <DownloadButton
+          loading={loading}
+          paletteRef={paletteRef}
+          username={username}
+        />
+      </form>
     </div>
   );
 };
-
-export default Download;

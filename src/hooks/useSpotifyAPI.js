@@ -94,7 +94,7 @@ export const getTopTracks = (url, setProgress, controller, tracks = []) => {
  * @returns The given array of tracks without the unwanted tracks
  */
 const removeUnwantedTracks = (tracks) => {
-  const allowedAlbumTypes = ['EP', 'ALBUM', 'COMPILATION'];
+  const allowedAlbumTypes = ['ep', 'album', 'compilation'];
   const isAsmr = (track) =>
     ['ASMR', 'Asmr'].some(
       (asmr) =>
@@ -105,7 +105,8 @@ const removeUnwantedTracks = (tracks) => {
 
   return tracks.filter(
     (track) =>
-      allowedAlbumTypes.includes(track.album.album_type) && !isAsmr(track)
+      allowedAlbumTypes.includes(track.album.album_type.toLowerCase()) &&
+      !isAsmr(track)
   );
 };
 

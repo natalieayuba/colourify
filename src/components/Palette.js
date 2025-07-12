@@ -1,7 +1,15 @@
-import { url } from '../../config';
-import spotifyLogo from '../../images/Spotify_Logo_RGB_Black.png';
+import { url } from '../config';
+import spotifyLogo from '../images/Spotify_Logo_RGB_Black.png';
+import { Albums, ProgressBar } from '.';
 
-const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
+export const Palette = ({
+  username,
+  paletteRef,
+  loading,
+  albums,
+  progress,
+  albumNameVisible,
+}) => {
   const heading = `${username}${
     username.endsWith('s') ? `'` : `'s`
   } Colour Palette`;
@@ -21,7 +29,11 @@ const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
           )}
           <p className='text-2xl'>{url}</p>
         </div>
-        {loading ? progressBar : albums}
+        {loading ? (
+          <ProgressBar value={progress} label='Loading albums...' />
+        ) : (
+          <Albums albums={albums} albumNameVisible={albumNameVisible} />
+        )}
         <img
           src={spotifyLogo}
           alt='Spotify Logo'
@@ -31,5 +43,3 @@ const Palette = ({ username, paletteRef, loading, albums, progressBar }) => {
     </div>
   );
 };
-
-export default Palette;
