@@ -33,7 +33,7 @@ export const Palette = ({
           <Albums albums={albums} albumNameVisible={albumNameVisible} />
         )}
         <img
-          src='/images/Spotify_Logo_RGB_Black.svg' // is this the correct path?
+          src='/images/Spotify_Logo_RGB_Black.svg'
           alt='Spotify Logo'
           className='w-1/5 h-auto self-center mt-24'
         />
