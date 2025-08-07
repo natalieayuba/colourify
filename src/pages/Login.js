@@ -1,6 +1,6 @@
 export const Login = () => (
   <div className='flex flex-col items-center pt-24 my-auto'>
-    <h1 className='text-6xl sm:text-7xl font-semibold text-center mb-6'>
+    <h1 className='text-6xl sm:text-7xl font-semibold text-center mb-6 overflow-hidden whitespace-nowrap mr-4'>
       Colourify
     </h1>
     <p className='text-xl sm:text-2xl max-w-lg text-center mb-10'>
@@ -18,7 +18,7 @@ export const Login = () => (
       Log in with Spotify
     </a>
     <img
-      srcset='/images/hero-image-430w.webp 430w, /images/hero-image-860w.webp 860w'
+      srcSet='/images/hero-image-430w.webp 430w, /images/hero-image-860w.webp 860w'
       sizes='(width <= 600px) 430px, 860px'
       src='/images/hero-image-860w.webp'
       alt='Example Colourify Palettes'

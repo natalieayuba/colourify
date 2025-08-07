@@ -13,7 +13,12 @@ export const Albums = ({ albums, albumNameVisible }) => (
             rel='noopener noreferrer'
           >
             <img
-              src={album.images[0].url}
+              src={
+                (
+                  album.images.find(({ width }) => width === 300) ||
+                  album.images[0]
+                ).url
+              }
               alt={`${title} Album Cover`}
               className='absolute'
               loading='eager'

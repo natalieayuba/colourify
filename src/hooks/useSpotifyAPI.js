@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ColorThief from 'colorthief';
+import { useEffect, useState } from 'react';
 
 export const useAccessToken = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -168,7 +168,7 @@ export const getPalettes = async (albums) => {
     });
 
   await Promise.all(
-    albums.map((album) => waitForImg(album.images[0].url))
+    albums.map(({ images }) => waitForImg(images[images.length - 1].url))
   ).then((albumCovers) =>
     albumCovers.forEach((albumCover) =>
       palettes.push(colorThief.getPalette(albumCover, 5))
