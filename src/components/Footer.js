@@ -1,4 +1,3 @@
-import config from '../config';
 import { Link } from './Link';
 
 const navlinks = [
@@ -15,14 +14,12 @@ export const Footer = ({ accessToken, setAccessToken }) => {
   };
 
   return (
-    <footer className='mt-12 text-sm p-6 bottom-0 gap-y-1 w-full items-center flex flex-col min-[404px]:flex-row justify-center'>
-      <p
-        className={`min-[404px]:after:content-['•'] after:text-gray-300 min-[404px]:after:mx-3`}
-      >
-        Created by{' '}
-        <Link url={config.portfolio} text='Natalie Ayuba' opensNewTab />
+    <footer className='mt-10 text-sm p-6 bottom-0 w-full flex justify-center'>
+      <p className="after:content-['•'] after:text-gray-300 after:mx-2 flex-none">
+        Created by{'  '}
+        <Link url='https://natalieayuba.com' text='Natalie Ayuba' opensNewTab />
       </p>
-      <div className='flex gap-4'>
+      <div className='flex gap-3 flex-none'>
         {navlinks.map(([url, name]) => (
           <Link key={url} url={url} onClick={resetAccessToken} text={name} />
         ))}

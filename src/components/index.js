@@ -1,11 +1,10 @@
-export { Link } from './Link';
-export { Footer } from './Footer';
-export { PageLayout } from './PageLayout';
-export { MetaTags } from './MetaTags';
-export { ScrollToTop } from './ScrollToTop';
 export { Albums } from './Albums';
 export { DownloadButton } from './DownloadButton';
+export { Footer } from './Footer';
+export { Link } from './Link';
+export { PageLayout } from './PageLayout';
 export { Palette } from './Palette';
 export { ProgressBar } from './ProgressBar';
+export { ScrollToTop } from './ScrollToTop';
 export { TimeRangeButtons } from './TimeRangeButtons';
 export { ToggleSwitch } from './ToggleSwitch';

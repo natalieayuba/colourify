@@ -1,14 +1,13 @@
-import { Login, Download, About, Privacy } from './pages';
-import { useAccessToken } from './hooks/useSpotifyAPI';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Footer, MetaTags, ScrollToTop } from './components';
+import { Footer, ScrollToTop } from './components';
+import { useAccessToken } from './hooks/useSpotifyAPI';
+import { About, Download, Login, Privacy } from './pages';
 
 const App = () => {
   const { accessToken, setAccessToken } = useAccessToken();
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <MetaTags />
       <div className='min-h-screen relative flex flex-col justify-between'>
         <main className='px-6 flex flex-col items-center flex-1'>
           <Routes>

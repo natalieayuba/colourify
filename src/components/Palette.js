@@ -1,5 +1,3 @@
-import { url } from '../config';
-import spotifyLogo from '../images/Spotify_Logo_RGB_Black.png';
 import { Albums, ProgressBar } from '.';
 
 export const Palette = ({
@@ -27,7 +25,7 @@ export const Palette = ({
               {heading}
             </h1>
           )}
-          <p className='text-2xl'>{url}</p>
+          <p className='text-2xl'>mycolourify.netlify.app</p>
         </div>
         {loading ? (
           <ProgressBar value={progress} label='Loading albums...' />
@@ -35,7 +33,7 @@ export const Palette = ({
           <Albums albums={albums} albumNameVisible={albumNameVisible} />
         )}
         <img
-          src={spotifyLogo}
+          src='/images/Spotify_Logo_RGB_Black.svg' // is this the correct path?
           alt='Spotify Logo'
           className='w-1/5 h-auto self-center mt-24'
         />

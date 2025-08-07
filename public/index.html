@@ -3,18 +3,41 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_GB" />
-    <meta name="theme-color" content="white" />
-    <title>Colourify</title>
-    <link rel="icon" href="%PUBLIC_URL%/images/favicon.ico" />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="%PUBLIC_URL%/images/hero-image-860w.webp"
+      type="image/webp"
+    />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="%PUBLIC_URL%/images/hero-image-430w.webp"
+      type="image/webp"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300..700&display=swap"
       rel="stylesheet"
-      crossorigin
     />
+    <link rel="icon" href="%PUBLIC_URL%/images/favicon.ico" />
+    <title>Colourify</title>
+    <meta property="og:title" content="Colourify" />
+    <meta
+      name="description"
+      content="Colorify is a tool that generates a colour palette from the cover art of your top albums on Spotify."
+    />
+    <meta
+      property="og:description"
+      content="Colorify is a tool that generates a colour palette from the cover art of your top albums on Spotify."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.webp" />
+    <meta name="theme-color" content="white" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

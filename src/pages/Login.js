@@ -1,6 +1,3 @@
-import spotifyIcon from '../images/Spotify_Icon_RGB_White.png';
-import examplePalettes from '../images/example-palettes.png';
-
 export const Login = () => (
   <div className='flex flex-col items-center pt-24 my-auto'>
     <h1 className='text-6xl sm:text-7xl font-semibold text-center mb-6'>
@@ -13,13 +10,20 @@ export const Login = () => (
       href='/.netlify/functions/login'
       className='btn bg-spotify-green bg-darker-center mb-8'
     >
-      <img src={spotifyIcon} alt='Spotify Icon' className='w-5 h-5' />
+      <img
+        src='/images/Spotify_Icon_RGB_White.svg'
+        alt='Spotify Icon'
+        className='size-6'
+      />
       Log in with Spotify
     </a>
     <img
-      src={examplePalettes}
+      srcset='/images/hero-image-430w.webp 430w, /images/hero-image-860w.webp 860w'
+      sizes='(width <= 600px) 430px, 860px'
+      src='/images/hero-image-860w.webp'
       alt='Example Colourify Palettes'
       className='pointer-events-none select-none'
+      fetchpriority='high'
     />
   </div>
 );
