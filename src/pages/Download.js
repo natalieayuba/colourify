@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import {
   DownloadButton,
   Palette,
-  TimeRangeButtons,
-  ToggleSwitch,
+  TimeRangeButton,
+  Toggle,
 } from '../components';
 import {
   getCurrentUser,
@@ -12,9 +12,21 @@ import {
   getTopTracks,
 } from '../hooks/useSpotifyAPI';
 
+const timeRanges = [
+  {
+    id: 'short_term',
+    text: 'Last month',
+  },
+  {
+    id: 'medium_term',
+    text: 'Last 6 months',
+  },
+  { id: 'long_term', text: 'All time' },
+];
+
 export const Download = () => {
   const [username, setUsername] = useState('');
-  const [albumNameVisible, setAlbumNameVisible] = useState(false);
+  const [showAlbumName, setShowAlbumName] = useState(false);
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -61,21 +73,35 @@ export const Download = () => {
           loading={loading}
           albums={albums}
           progress={progress}
-          albumNameVisible={albumNameVisible}
+          showAlbumName={showAlbumName}
         />
       </div>
       <form className="w-[324px] sm:w-[520px]">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-8">Customise</h2>
-        <TimeRangeButtons
-          selectedTimeRange={selectedTimeRange}
-          setSelectedTimeRange={setSelectedTimeRange}
-          controller={controller}
-          setController={setController}
-        />
-        <ToggleSwitch
-          loading={loading}
-          albumNameVisible={albumNameVisible}
-          setAlbumNameVisible={setAlbumNameVisible}
+        <fieldset className="mb-8">
+          <legend className="mb-2">Show top albums from</legend>
+          <div className="flex gap-2 flex-wrap">
+            {timeRanges.map((timeRange) => (
+              <TimeRangeButton
+                key={timeRange.id}
+                timeRange={timeRange}
+                selectedTimeRange={selectedTimeRange}
+                onClick={() => {
+                  if (timeRange.id !== selectedTimeRange) {
+                    if (controller) controller.abort();
+                    setController(new AbortController());
+                    setSelectedTimeRange(timeRange.id);
+                  }
+                }}
+              />
+            ))}
+          </div>
+        </fieldset>
+        <Toggle
+          disabled={loading}
+          label="Include artist and album name"
+          name="showAlbumName"
+          onClick={() => setShowAlbumName(!showAlbumName)}
         />
         <DownloadButton
           loading={loading}

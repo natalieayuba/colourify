@@ -1,4 +1,4 @@
-export const Login = () => (
+export const Home = () => (
   <div className="flex flex-col items-center pt-24 my-auto">
     <h1 className="text-6xl sm:text-7xl font-semibold text-center mb-6 overflow-hidden whitespace-nowrap mr-4">
       Colourify
@@ -23,7 +23,7 @@ export const Login = () => (
       src="/images/hero-image-860w.webp"
       alt="Example Colourify Palettes"
       className="pointer-events-none select-none"
-      fetchpriority="high"
+      fetchPriority="high"
     />
   </div>
 );

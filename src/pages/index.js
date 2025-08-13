@@ -1,4 +1,4 @@
 export { About } from './About';
 export { Download } from './Download';
-export { Login } from './Login';
+export { Home } from './Home';
 export { Privacy } from './Privacy';

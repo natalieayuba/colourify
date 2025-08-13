@@ -1,9 +1,18 @@
 import { Link } from './Link';
 
 const navlinks = [
-  ['/', 'Home'],
-  ['/about', 'About'],
-  ['/privacy', 'Privacy'],
+  {
+    url: '/',
+    name: 'Home',
+  },
+  {
+    url: '/about',
+    name: 'About',
+  },
+  {
+    url: '/privacy',
+    name: 'Privacy',
+  },
 ];
 
 export const Footer = ({ accessToken, setAccessToken }) => {
@@ -20,8 +29,8 @@ export const Footer = ({ accessToken, setAccessToken }) => {
         <Link url="https://natalieayuba.com" text="Natalie Ayuba" opensNewTab />
       </p>
       <div className="flex gap-3 flex-none">
-        {navlinks.map(([url, name]) => (
-          <Link key={url} url={url} onClick={resetAccessToken} text={name} />
+        {navlinks.map(({ url, name }) => (
+          <Link key={name} url={url} onClick={resetAccessToken} text={name} />
         ))}
       </div>
     </footer>
