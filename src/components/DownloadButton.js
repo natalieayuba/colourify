@@ -16,12 +16,12 @@ export const DownloadButton = ({ paletteRef, username, loading }) => {
 
   return (
     <button
-      type='button'
-      id='download-btn'
-      className='w-full sm:w-auto flex justify-center mt-12 btn disabled:btn-disabled enabled:hover:opacity-90'
+      type="button"
+      id="download-btn"
+      className="w-full sm:w-auto flex justify-center mt-12 btn disabled:btn-disabled enabled:hover:opacity-90"
       disabled={loading}
       onClick={downloadImage}
-      title='Download image'
+      title="Download image"
     >
       Download image
     </button>

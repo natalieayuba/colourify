@@ -16,10 +16,6 @@
   .btn {
     @apply text-xl font-medium px-10 py-5 rounded-lg text-white flex gap-4 items-center justify-center bg-black transition duration-200 hover:shadow-lg;
   }
-
-  .link {
-    @apply text-blue hover:underline;
-  }
 }
 
 @layer utilities {

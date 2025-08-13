@@ -1,16 +1,16 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
-  getCurrentUser,
-  getTopTracks,
-  getTopAlbums,
-  getPalettes,
-} from '../hooks/useSpotifyAPI';
-import {
-  ToggleSwitch,
-  TimeRangeButtons,
   DownloadButton,
   Palette,
+  TimeRangeButtons,
+  ToggleSwitch,
 } from '../components';
+import {
+  getCurrentUser,
+  getPalettes,
+  getTopAlbums,
+  getTopTracks,
+} from '../hooks/useSpotifyAPI';
 
 export const Download = () => {
   const [username, setUsername] = useState('');
@@ -53,8 +53,8 @@ export const Download = () => {
   }, [selectedTimeRange, controller]);
 
   return (
-    <div className='py-10 sm:pt-24 gap-20 flex-wrap justify-center flex'>
-      <div className='shadow-[0_4px_30px_0px_rgba(0,0,0,0.05)] scale-[0.3] sm:scale-50 mb-[-1344px] mr-[-756px] sm:mb-[-960px] sm:mr-[-540px] origin-top-left'>
+    <div className="py-10 sm:pt-24 gap-20 flex-wrap justify-center flex">
+      <div className="shadow-[0_4px_30px_0px_rgba(0,0,0,0.05)] scale-[0.3] sm:scale-50 mb-[-1344px] mr-[-756px] sm:mb-[-960px] sm:mr-[-540px] origin-top-left">
         <Palette
           username={username}
           paletteRef={paletteRef}
@@ -64,8 +64,8 @@ export const Download = () => {
           albumNameVisible={albumNameVisible}
         />
       </div>
-      <form className='w-[324px] sm:w-[520px]'>
-        <h2 className='text-3xl sm:text-4xl font-semibold mb-8'>Customise</h2>
+      <form className="w-[324px] sm:w-[520px]">
+        <h2 className="text-3xl sm:text-4xl font-semibold mb-8">Customise</h2>
         <TimeRangeButtons
           selectedTimeRange={selectedTimeRange}
           setSelectedTimeRange={setSelectedTimeRange}
