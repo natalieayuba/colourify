@@ -1,5 +1,4 @@
 const axios = require('axios');
-const querystring = require('querystring');
 const {
   client_id,
   client_secret,
@@ -12,14 +11,13 @@ exports.handler = async (event, _) => {
   const storedState = event.headers.cookie
     ? event.headers.cookie.split(';')[0].split('=')[1]
     : null;
+  const params = new URLSearchParams({ error: 'state_mismatch' });
 
   if (state === null || state !== storedState) {
     return {
       statusCode: 302,
       headers: {
-        Location: `${base_uri}/#${querystring.stringify({
-          error: 'state_mismatch',
-        })}`,
+        Location: `${base_uri}/#${params.toString()}`,
         'Cache-Control': 'no-cache',
       },
     };
@@ -43,25 +41,22 @@ exports.handler = async (event, _) => {
     return axios(authOptions)
       .then((response) => {
         const { access_token, refresh_token } = response.data;
+        const params = new URLSearchParams({ access_token, refresh_token });
         return {
           statusCode: 302,
           headers: {
-            Location: `${base_uri}/#${querystring.stringify({
-              access_token,
-              refresh_token,
-            })}`,
+            Location: `${base_uri}/#${params.toString()}`,
             'Cache-Control': 'no-cache',
           },
         };
       })
       .catch((error) => {
         console.error(error);
+        const params = new URLSearchParams({ error: 'invalid_token' });
         return {
           statusCode: 302,
           headers: {
-            Location: `${base_uri}/#${querystring.stringify({
-              error: 'invalid_token',
-            })}`,
+            Location: `${base_uri}/#${params.toString()}`,
             'Cache-Control': 'no-cache',
           },
         };

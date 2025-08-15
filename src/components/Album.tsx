@@ -1,8 +1,14 @@
-import type { AlbumType } from '../interfaces';
-import { formatClassName } from '../utils';
+import { formatClassName } from "../utils";
 
-interface AlbumProps {
-  album: AlbumType;
+export interface AlbumProps {
+  album: {
+    id: string;
+    name: string;
+    artists: { name: string }[];
+    images: { width: number; url: string }[];
+    external_urls: { spotify: string };
+    palette: string[];
+  };
   showAlbumName: boolean;
 }
 
@@ -22,32 +28,32 @@ export const Album = ({ album, showAlbumName }: AlbumProps) => {
   ));
 
   return (
-    <div className="flex-1 flex gap-6">
+    <div className="flex flex-1 gap-6">
       <a
         id={album.id}
         href={album.external_urls.spotify}
         title={title}
-        className="h-full aspect-square relative"
+        className="relative aspect-square h-full"
         target="_blank"
         rel="noopener noreferrer"
       >
         <img
           src={albumCoverUrl}
-          alt={title + ' Album Cover'}
+          alt={title + " Album Cover"}
           className="absolute"
           loading="eager"
           crossOrigin="anonymous"
         />
         <p
           className={formatClassName(
-            'h-16 flex items-center album-title absolute -bottom-16 text-2xl w-max',
-            !showAlbumName && 'hidden'
+            "album-title absolute -bottom-16 flex h-16 w-max items-center text-2xl",
+            !showAlbumName && "hidden",
           )}
         >
           {title}
         </p>
       </a>
-      <div className="flex-1 flex">{colourSwatches}</div>
+      <div className="flex flex-1">{colourSwatches}</div>
     </div>
   );
 };
