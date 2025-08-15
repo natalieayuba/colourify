@@ -1,11 +1,10 @@
 export const Home = () => (
   <div className="flex flex-col items-center pt-24 my-auto">
-    <h1 className="text-6xl sm:text-7xl font-semibold text-center mb-6 overflow-hidden whitespace-nowrap mr-4">
-      Colourify
-    </h1>
+    <h1 className="text-6xl sm:text-7xl font-semibold mb-6 mr-4">Colourify</h1>
     <p className="text-xl sm:text-2xl max-w-lg text-center mb-10">
       Generate a colour palette from the cover art of your top albums on Spotify
     </p>
+    {/* button */}
     <a
       href="/.netlify/functions/login"
       className="btn bg-spotify-green bg-darker-center mb-8"

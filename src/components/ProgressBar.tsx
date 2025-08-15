@@ -1,4 +1,9 @@
-export const ProgressBar = ({ value, label }) => {
+interface ProgressBarProps {
+  value: number;
+  label: string;
+}
+
+export const ProgressBar = ({ value, label }: ProgressBarProps) => {
   const percentage = value * 100;
   return (
     <div className="flex gap-5 flex-col items-center text-3xl">

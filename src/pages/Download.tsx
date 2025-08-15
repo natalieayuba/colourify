@@ -82,6 +82,7 @@ export const Download = () => {
           <legend className="mb-2">Show top albums from</legend>
           <div className="flex gap-2 flex-wrap">
             {timeRanges.map((timeRange) => (
+              // segmented control or toggle group
               <TimeRangeButton
                 key={timeRange.id}
                 timeRange={timeRange}
@@ -97,12 +98,14 @@ export const Download = () => {
             ))}
           </div>
         </fieldset>
+        {/* // switch */}
         <Toggle
           disabled={loading}
           label="Include artist and album name"
           name="showAlbumName"
           onClick={() => setShowAlbumName(!showAlbumName)}
         />
+        {/* button that can also be a link */}
         <DownloadButton
           loading={loading}
           paletteRef={paletteRef}

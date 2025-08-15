@@ -1,17 +1,10 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer } from './components';
 import { useAccessToken } from './hooks/useSpotifyAPI';
 import { About, Download, Home, Privacy } from './pages';
 
 const App = () => {
   const { accessToken, setAccessToken } = useAccessToken();
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
   return (
     <BrowserRouter>
       <div className="min-h-screen relative flex flex-col justify-between">

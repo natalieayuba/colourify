@@ -4,17 +4,27 @@
   "private": true,
   "author": "Natalie Ayuba",
   "dependencies": {
+    "@chakra-ui/react": "^3.24.2",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "axios": "^1.6.7",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "colorthief": "^2.4.0",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "eslint-config-react-app": "^7.0.1",
     "html2canvas": "^1.4.1",
+    "lucide-react": "^0.539.0",
+    "next-themes": "^0.4.6",
     "querystring": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "tailwind-merge": "^3.3.1",
+    "tw-animate-css": "^1.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,7 +52,11 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "tailwindcss": "^3.4.1"
+    "@types/node": "^24.2.1",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.9.2"
   },
   "jest": {
     "transformIgnorePatterns": [

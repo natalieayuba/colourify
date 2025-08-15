@@ -1,8 +1,17 @@
 import { formatClassName } from '../utils';
 
+interface TimeRangeButtonProps {
+  timeRange: { id: string; text: string };
+  selectedTimeRange: string;
+  onClick: () => void;
+}
 // maybe use material ui for styling instead?
 
-export const TimeRangeButton = ({ timeRange, selectedTimeRange, onClick }) => (
+export const TimeRangeButton = ({
+  timeRange,
+  selectedTimeRange,
+  onClick,
+}: TimeRangeButtonProps) => (
   <label
     htmlFor={timeRange.id}
     className={formatClassName(

@@ -1,14 +1,20 @@
 import { formatClassName } from '../utils';
 
-export const Toggle = ({ label, name, onClick, disabled }) => (
+interface ToggleProps {
+  label: string;
+  name: string;
+  onClick?: () => void;
+  disabled?: boolean;
+}
+
+export const Toggle = ({ label, disabled, ...rest }: ToggleProps) => (
   <label className="flex gap-2 justify-between items-center mb-8">
     {label}
     <input
       type="checkbox"
-      name={name}
       disabled={disabled}
-      onClick={onClick}
       className="hidden peer"
+      {...rest}
     />
     <span
       className={formatClassName(

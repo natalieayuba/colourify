@@ -5,8 +5,7 @@ export const About = () => (
     <p className="mb-6">
       Colourify is a tool that generates a colour palette from the cover art of
       a user's top five albums on Spotify. To estimate your top albums,
-      Colourify gets your top tracks using the
-      {/* link element */}
+      Colourify gets your top tracks using the {/* link element */}
       <Link
         url="https://developer.spotify.com/documentation/web-api"
         opensNewTab

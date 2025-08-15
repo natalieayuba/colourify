@@ -1,11 +1,17 @@
+import type { AlbumType } from '../interfaces';
 import { formatClassName } from '../utils';
 
-export const Album = ({ album, showAlbumName }) => {
-  const title = `${album.artists[0].name} - ${album.name}`;
+interface AlbumProps {
+  album: AlbumType;
+  showAlbumName: boolean;
+}
+
+export const Album = ({ album, showAlbumName }: AlbumProps) => {
+  const title = `${album.artists[0]?.name} - ${album.name}`;
 
   const albumCoverUrl = (
     album.images.find(({ width }) => width === 300) || album.images[0]
-  ).url;
+  )?.url;
 
   const colourSwatches = album.palette.map((swatch) => (
     <div

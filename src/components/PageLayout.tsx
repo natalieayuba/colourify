@@ -1,6 +1,12 @@
+import type { ReactNode } from 'react';
 import { Link } from '.';
 
-export const PageLayout = ({ heading, children }) => (
+interface PageLayoutProps {
+  heading: string;
+  children: ReactNode;
+}
+
+export const PageLayout = ({ heading, children }: PageLayoutProps) => (
   <div className="max-w-2xl pt-12 md:pt-24">
     <Link
       url="/"

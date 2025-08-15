@@ -1,8 +1,18 @@
 import html2canvas from 'html2canvas';
 
-export const DownloadButton = ({ paletteRef, username, loading }) => {
+interface DownloadButtonProps {
+  paletteRef: React.RefObject<HTMLDivElement>;
+  username: string;
+  loading: boolean;
+}
+
+export const DownloadButton = ({
+  paletteRef,
+  username,
+  loading,
+}: DownloadButtonProps) => {
   const downloadImage = async () => {
-    html2canvas(paletteRef.current.parentElement, {
+    html2canvas(paletteRef.current.parentElement as HTMLElement, {
       allowTaint: true,
       useCORS: true,
       scale: 2 * window.devicePixelRatio,

@@ -15,7 +15,12 @@ const navlinks = [
   },
 ];
 
-export const Footer = ({ accessToken, setAccessToken }) => {
+interface FooterProps {
+  accessToken: string;
+  setAccessToken: (token: string | null) => void;
+}
+
+export const Footer = ({ accessToken, setAccessToken }: FooterProps) => {
   const resetAccessToken = () => {
     if (window.location.href.includes(accessToken)) {
       setAccessToken(null);
